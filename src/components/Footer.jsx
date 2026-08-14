@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUp, Mail, Shield, Check, Globe, Share2 } from 'lucide-react';
+import { ArrowUp, Mail, Shield, Check, Music, Disc } from 'lucide-react';
 import { RESTAURANT_DATA } from '../data/restaurantData';
 
 export default function Footer({ lang, onOpenReservation, onOpenMembership }) {
@@ -20,16 +20,16 @@ export default function Footer({ lang, onOpenReservation, onOpenMembership }) {
   return (
     <footer className="site-footer">
       <div className="container">
-        {/* Newsletter Section */}
+        {/* Newsletter Banner */}
         <div className="footer-newsletter-banner glass-card">
           <div className="newsletter-text">
             <h3 className="newsletter-title font-serif">
-              {lang === 'es' ? 'La Gaceta Clandestina de La Octava' : 'The La Octava Private Gazette'}
+              {lang === 'es' ? 'La Lista Secreta de La Octava' : 'The La Octava Secret Guestlist'}
             </h3>
             <p className="newsletter-desc font-editorial">
               {lang === 'es'
-                ? 'Reciba con prioridad nuestras aperturas de barricas históricas, invitaciones a chefs estrella internacionales y eventos privados.'
-                : 'Receive early announcements on rare barrel allocations, guest Michelin star chef dinners, and private salon events.'}
+                ? 'Recibe los carteles semanales de conciertos de jazz, invitados internacionales de deep house y convocatorias a puerta cerrada.'
+                : 'Receive early announcements for live jazz lineups, international guest DJs, and secret after-hours jam sessions.'}
             </p>
           </div>
 
@@ -39,27 +39,27 @@ export default function Footer({ lang, onOpenReservation, onOpenMembership }) {
                 <input
                   type="email"
                   className="newsletter-input"
-                  placeholder={lang === 'es' ? 'Su correo electrónico privado...' : 'Your private email address...'}
+                  placeholder={lang === 'es' ? 'Tu correo electrónico...' : 'Your email address...'}
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   required
                 />
                 <button type="submit" className="btn-primary newsletter-btn">
-                  <span>{lang === 'es' ? 'Suscribirse' : 'Subscribe'}</span>
+                  <span>{lang === 'es' ? 'Unirme' : 'Join'}</span>
                 </button>
               </form>
             ) : (
               <div className="newsletter-success">
                 <Check size={18} className="text-gold" />
-                <span>{lang === 'es' ? 'Gracias por suscribirse a nuestra lista privada.' : 'Thank you for joining our private registry.'}</span>
+                <span>{lang === 'es' ? 'Registrado en la lista secreta de La Octava.' : 'Successfully registered on our secret list.'}</span>
               </div>
             )}
           </div>
         </div>
 
-        {/* Main Footer Links Grid */}
+        {/* Main Footer Links */}
         <div className="footer-main-grid">
-          {/* Col 1: Brand Info */}
+          {/* Col 1 */}
           <div className="footer-col brand-col">
             <div className="footer-logo-wrap">
               <img src="/icon.jpeg" alt="La Octava" className="footer-icon-img" />
@@ -67,8 +67,8 @@ export default function Footer({ lang, onOpenReservation, onOpenMembership }) {
             </div>
             <p className="footer-brand-desc font-editorial">
               {lang === 'es'
-                ? 'El santuario sensorial donde la alta gastronomía, los grandes vinos de colección y las noches bajo las estrellas se encuentran.'
-                : 'The sensory sanctuary where haute cuisine, collectible grand crus, and starlit evenings converge in Madrid.'}
+                ? 'El templo nocturno donde el jazz acústico y el piano de cola arriba se encuentran con la energía del house club subterráneo abajo.'
+                : 'The nocturnal temple where acoustic grand piano jazz upstairs meets subterranean house club culture below.'}
             </p>
             <div className="footer-social-links">
               <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-icon" aria-label="Instagram">
@@ -87,60 +87,60 @@ export default function Footer({ lang, onOpenReservation, onOpenMembership }) {
             </div>
           </div>
 
-          {/* Col 2: Navigation */}
+          {/* Col 2 */}
           <div className="footer-col">
             <h4 className="footer-col-title font-serif">
-              {lang === 'es' ? 'Explorar' : 'Explore'}
+              {lang === 'es' ? 'Navegación' : 'Navigation'}
             </h4>
             <ul className="footer-links-list">
-              <li><a href="#concepto">{lang === 'es' ? 'El Concepto & Filosofía' : 'The Concept & Philosophy'}</a></li>
-              <li><a href="#menu">{lang === 'es' ? 'Menú Degustación 8 Pasos' : '8-Step Tasting Journey'}</a></li>
-              <li><a href="#sommelier">{lang === 'es' ? 'Vuelos de Sommelier' : 'Sommelier Wine Flights'}</a></li>
-              <li><a href="#espacios">{lang === 'es' ? 'Los Cuatro Espacios' : 'The Four Sanctuaries'}</a></li>
-              <li><a href="#prensa">{lang === 'es' ? 'Guía Michelin & Prensa' : 'Michelin Guide & Press'}</a></li>
-              <li><a href="#contacto">{lang === 'es' ? 'Ubicación & Dress Code' : 'Location & Dress Code'}</a></li>
+              <li><a href="#niveles">{lang === 'es' ? 'Los Dos Niveles' : 'The Two Levels'}</a></li>
+              <li><a href="#cartel">{lang === 'es' ? 'Cartel Semanal en Vivo' : 'Weekly Live Timetable'}</a></li>
+              <li><a href="#cocteles">{lang === 'es' ? 'Cócteles de Jazz & House' : 'Cocktails & Mixology'}</a></li>
+              <li><a href="#espacios">{lang === 'es' ? 'Piano Bar & Sótano' : 'Piano Bar & Sub-Vault'}</a></li>
+              <li><a href="#membresia">{lang === 'es' ? 'Llave Negra VIP' : 'Black Key VIP'}</a></li>
+              <li><a href="#contacto">{lang === 'es' ? 'Ubicación & Horarios' : 'Location & Hours'}</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Services & Membership */}
+          {/* Col 3 */}
           <div className="footer-col">
             <h4 className="footer-col-title font-serif">
-              {lang === 'es' ? 'Experiencias VIP' : 'VIP Experiences'}
+              {lang === 'es' ? 'Pases & Reservas' : 'Passes & Booking'}
             </h4>
             <ul className="footer-links-list">
               <li>
-                <button type="button" className="footer-btn-link" onClick={onOpenReservation}>
-                  {lang === 'es' ? 'Reserva de Mesa y Bóveda' : 'Table & Vault Reservations'}
+                <button type="button" className="footer-btn-link" onClick={() => onOpenReservation({ level: 'piano' })}>
+                  {lang === 'es' ? 'Mesa en Piano Bar (Jazz)' : 'Piano Bar Table Booking'}
+                </button>
+              </li>
+              <li>
+                <button type="button" className="footer-btn-link" onClick={() => onOpenReservation({ level: 'club' })}>
+                  {lang === 'es' ? 'Entrada / Mesa VIP House Club' : 'Sub-Vault VIP Pass'}
                 </button>
               </li>
               <li>
                 <button type="button" className="footer-btn-link" onClick={onOpenMembership}>
-                  {lang === 'es' ? 'El Círculo Octava (Membresía)' : 'The Eighth Circle Membership'}
+                  {lang === 'es' ? 'Solicitar Llave Negra' : 'Apply for Black Key'}
                 </button>
               </li>
               <li>
-                <a href="#sommelier" className="footer-link">
-                  {lang === 'es' ? 'Catas a Ciegas Privadas' : 'Private Blind Tastings'}
-                </a>
-              </li>
-              <li>
-                <a href={`https://wa.me/34688888888`} target="_blank" rel="noreferrer" className="footer-link">
-                  {lang === 'es' ? 'Mayordomía WhatsApp Concierge' : 'WhatsApp Private Concierge'}
+                <a href="https://wa.me/34688888888" target="_blank" rel="noreferrer" className="footer-link">
+                  {lang === 'es' ? 'WhatsApp Puerta & Concierge' : 'WhatsApp Door Concierge'}
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Contact & Hours */}
+          {/* Col 4 */}
           <div className="footer-col">
             <h4 className="footer-col-title font-serif">
-              {lang === 'es' ? 'Contacto & Horarios' : 'Contact & Hours'}
+              {lang === 'es' ? 'Horarios & Puertas' : 'Hours & Location'}
             </h4>
             <p className="footer-contact-item"><strong>{RESTAURANT_DATA.address}</strong></p>
-            <p className="footer-contact-item">{RESTAURANT_DATA.phone}</p>
-            <p className="footer-contact-item">{RESTAURANT_DATA.email}</p>
+            <p className="footer-contact-item">🎹 Piano Bar: 19:00 – 02:00</p>
+            <p className="footer-contact-item">🎛️ House Club: 23:30 – 06:00</p>
             <div className="footer-hours-tag">
-              <span className="gold-badge">{lang === 'es' ? 'Abierto Mar – Dom' : 'Open Tue – Sun'}</span>
+              <span className="gold-badge">{lang === 'es' ? 'Martes a Domingo' : 'Tuesday to Sunday'}</span>
             </div>
           </div>
         </div>
@@ -148,11 +148,11 @@ export default function Footer({ lang, onOpenReservation, onOpenMembership }) {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <div className="footer-legal">
-            <span>© {new Date().getFullYear()} La Octava S.L. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</span>
+            <span>© {new Date().getFullYear()} La Octava Jazz & House Club. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</span>
             <span className="legal-dot">•</span>
             <a href="#" className="legal-link">{lang === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}</a>
             <span className="legal-dot">•</span>
-            <a href="#" className="legal-link">{lang === 'es' ? 'Términos & Condiciones' : 'Terms & Conditions'}</a>
+            <a href="#" className="legal-link">{lang === 'es' ? 'Términos de Acceso' : 'Terms of Admission'}</a>
           </div>
 
           <button 

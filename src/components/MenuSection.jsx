@@ -1,219 +1,79 @@
 import React, { useState } from 'react';
-import { Wine, Utensils, GlassWater, Award, Sparkles, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
+import { GlassWater, Utensils, Wine, Disc, Music, Sparkles } from 'lucide-react';
 import { RESTAURANT_DATA } from '../data/restaurantData';
 
 export default function MenuSection({ lang, currency, onOpenReservation }) {
-  const [activeMenuTab, setActiveMenuTab] = useState('tasting');
-  const [expandedStep, setExpandedStep] = useState('step-1');
+  const [activeTab, setActiveTab] = useState('jazz-cocktails');
 
   const formatPrice = (eur, usd) => {
     return currency === 'EUR' ? `${eur} €` : `$ ${usd}`;
   };
 
-  const toggleStep = (id) => {
-    setExpandedStep(expandedStep === id ? null : id);
-  };
+  const jazzCocktails = RESTAURANT_DATA.cocktails.filter(c => c.category === 'Jazz Bar Signature');
+  const houseCocktails = RESTAURANT_DATA.cocktails.filter(c => c.category === 'Sub-Vault House');
 
   return (
-    <section className="menu-section" id="menu">
+    <section className="menu-section" id="cocteles">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <span className="section-subtitle">
-            {lang === 'es' ? 'Alta Gastronomía de Temporada' : 'Seasonal Haute Cuisine'}
+            {lang === 'es' ? 'Alquimia & Bocados Nocturnos' : 'Liquid Alchemy & Night Bites'}
           </span>
           <h2 className="section-title">
-            {lang === 'es' ? 'Menús & Alquimia Líquida' : 'Menus & Liquid Alchemy'}
+            {lang === 'es' ? 'La Carta Líquida & Gourmet' : 'Cocktails, Vinyl & Culinary Bites'}
           </h2>
           <p className="section-desc">
             {lang === 'es'
-              ? 'Una sinfonía de productos excelsos donde la técnica de vanguardia respeta la pureza de cada origen.'
-              : 'A symphony of noble ingredients where avant-garde technique honors the pristine essence of origin.'}
+              ? 'Destilados selectos ahumados con madera de roble para el piano bar y elixires energéticos de alta tensión para la pista de baile del sótano.'
+              : 'Oak-smoked vintage spirits crafted for the piano lounge and high-voltage energy elixirs for the subterranean dance floor.'}
           </p>
         </div>
 
-        {/* Menu Category Switcher */}
+        {/* Category Tabs */}
         <div className="menu-tab-nav">
           <button
             type="button"
-            className={`menu-tab-btn ${activeMenuTab === 'tasting' ? 'active' : ''}`}
-            onClick={() => setActiveMenuTab('tasting')}
+            className={`menu-tab-btn ${activeTab === 'jazz-cocktails' ? 'active' : ''}`}
+            onClick={() => setActiveTab('jazz-cocktails')}
           >
-            <Sparkles size={16} />
-            <span>{lang === 'es' ? 'Menú Degustación (8 Pasos)' : '8-Step Tasting Journey'}</span>
+            <Music size={16} />
+            <span>{lang === 'es' ? 'Cócteles de Piano Bar' : 'Piano Bar Cocktails'}</span>
           </button>
 
           <button
             type="button"
-            className={`menu-tab-btn ${activeMenuTab === 'alacarte' ? 'active' : ''}`}
-            onClick={() => setActiveMenuTab('alacarte')}
+            className={`menu-tab-btn ${activeTab === 'house-cocktails' ? 'active' : ''}`}
+            onClick={() => setActiveTab('house-cocktails')}
+          >
+            <Disc size={16} />
+            <span>{lang === 'es' ? 'Mixología Sub-Vault House' : 'Sub-Vault Energy Libations'}</span>
+          </button>
+
+          <button
+            type="button"
+            className={`menu-tab-btn ${activeTab === 'food-bites' ? 'active' : ''}`}
+            onClick={() => setActiveTab('food-bites')}
           >
             <Utensils size={16} />
-            <span>{lang === 'es' ? 'Carta de Temporada' : 'A La Carte Selection'}</span>
+            <span>{lang === 'es' ? 'Bocados Gourmet (Toda la Noche)' : 'Gourmet Bites (All Night)'}</span>
           </button>
 
           <button
             type="button"
-            className={`menu-tab-btn ${activeMenuTab === 'cocktails' ? 'active' : ''}`}
-            onClick={() => setActiveMenuTab('cocktails')}
-          >
-            <GlassWater size={16} />
-            <span>{lang === 'es' ? 'Mixología de Autor' : 'Signature Cocktails'}</span>
-          </button>
-
-          <button
-            type="button"
-            className={`menu-tab-btn ${activeMenuTab === 'cellar' ? 'active' : ''}`}
-            onClick={() => setActiveMenuTab('cellar')}
+            className={`menu-tab-btn ${activeTab === 'wines' ? 'active' : ''}`}
+            onClick={() => setActiveTab('wines')}
           >
             <Wine size={16} />
-            <span>{lang === 'es' ? 'Tesoros de la Cava' : 'Grand Cellar Icons'}</span>
+            <span>{lang === 'es' ? 'Champagnes & Grand Crus' : 'Champagnes & Grand Crus'}</span>
           </button>
         </div>
 
-        {/* TAB 1: 8-STEP TASTING MENU */}
-        {activeMenuTab === 'tasting' && (
-          <div className="tasting-menu-wrapper">
-            {/* Header Highlight Banner */}
-            <div className="tasting-hero-banner glass-card">
-              <div className="banner-badge-group">
-                <span className="gold-badge">OPUS 2026</span>
-                <span className="banner-duration font-serif">8 TIEMPOS • 3 HORAS DE VIAJE</span>
-              </div>
-              <div className="banner-pricing-row">
-                <div className="pricing-item">
-                  <span className="pricing-title">
-                    {lang === 'es' ? 'Menú "Octava Sinfonía"' : '"Octave Symphony" Menu'}
-                  </span>
-                  <span className="pricing-value font-serif text-gold">
-                    {formatPrice(185, 205)} <span className="pricing-sub">/ {lang === 'es' ? 'persona' : 'guest'}</span>
-                  </span>
-                </div>
-                <div className="pricing-divider"></div>
-                <div className="pricing-item">
-                  <span className="pricing-title">
-                    {lang === 'es' ? 'Maridaje Armonía Grand Cru' : 'Grand Cru Wine Pairing'}
-                  </span>
-                  <span className="pricing-value font-serif text-gold">
-                    {formatPrice(110, 125)} <span className="pricing-sub">/ {lang === 'es' ? 'persona' : 'guest'}</span>
-                  </span>
-                </div>
-                <div className="pricing-divider"></div>
-                <div className="pricing-item">
-                  <span className="pricing-title">
-                    {lang === 'es' ? 'Maridaje Añadas Míticas Icono' : 'Legendary Icons Flight'}
-                  </span>
-                  <span className="pricing-value font-serif text-gold">
-                    {formatPrice(230, 255)} <span className="pricing-sub">/ {lang === 'es' ? 'persona' : 'guest'}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Steps Accordion List */}
-            <div className="tasting-steps-grid">
-              {RESTAURANT_DATA.tastingMenu.map((item) => {
-                const isOpen = expandedStep === item.id;
-                return (
-                  <div 
-                    key={item.id} 
-                    className={`tasting-step-card glass-card ${isOpen ? 'is-open' : ''}`}
-                  >
-                    <div 
-                      className="step-card-header"
-                      onClick={() => toggleStep(item.id)}
-                    >
-                      <div className="step-tag-circle font-serif">{item.step}</div>
-                      <div className="step-title-wrap">
-                        <h4 className="step-dish-name">
-                          {lang === 'es' ? item.nameEs : item.nameEn}
-                        </h4>
-                      </div>
-                      <button type="button" className="step-toggle-btn" aria-label="Toggle dish details">
-                        {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                      </button>
-                    </div>
-
-                    {isOpen && (
-                      <div className="step-expanded-content">
-                        <p className="step-dish-desc font-editorial">
-                          {lang === 'es' ? item.descriptionEs : item.descriptionEn}
-                        </p>
-
-                        <div className="step-pairing-box">
-                          <div className="pairing-label">
-                            <Wine size={16} className="text-gold" />
-                            <span>{lang === 'es' ? 'Armonía Sommelier Seleccionada:' : 'Sommelier Pairing Selection:'}</span>
-                          </div>
-                          <div className="pairing-wine-name font-serif">
-                            {lang === 'es' ? item.pairingEs : item.pairingEn}
-                          </div>
-                        </div>
-
-                        {item.allergens.length > 0 && (
-                          <div className="step-allergens-row">
-                            <span className="allergens-tag">{lang === 'es' ? 'Alérgenos:' : 'Allergens:'}</span>
-                            {item.allergens.map((alg, aIdx) => (
-                              <span key={aIdx} className="allergen-pill">{alg}</span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Tasting CTA */}
-            <div className="tasting-bottom-cta">
-              <button 
-                type="button" 
-                className="btn-primary"
-                onClick={() => onOpenReservation({ experience: 'tasting-menu' })}
-              >
-                <Sparkles size={16} />
-                <span>{lang === 'es' ? 'Reservar Menú Degustación' : 'Book Tasting Journey'}</span>
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 2: A LA CARTE */}
-        {activeMenuTab === 'alacarte' && (
-          <div className="alacarte-grid">
-            {RESTAURANT_DATA.aLaCarte.map((cat, cIdx) => (
-              <div key={cIdx} className="alacarte-category-card glass-card">
-                <h3 className="alacarte-cat-title">
-                  {lang === 'es' ? cat.categoryEs : cat.categoryEn}
-                </h3>
-                <div className="alacarte-items-list">
-                  {cat.items.map((dish, dIdx) => (
-                    <div key={dIdx} className="alacarte-item-row">
-                      <div className="alacarte-item-info">
-                        <div className="item-name-price">
-                          <span className="item-name">{lang === 'es' ? dish.nameEs : dish.nameEn}</span>
-                          <span className="item-price font-serif text-gold">
-                            {formatPrice(dish.priceEur, dish.priceUsd)}
-                          </span>
-                        </div>
-                        <p className="item-desc font-editorial">
-                          {lang === 'es' ? dish.descEs : dish.descEn}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* TAB 3: SIGNATURE COCKTAILS */}
-        {activeMenuTab === 'cocktails' && (
+        {/* TAB 1: JAZZ COCKTAILS */}
+        {activeTab === 'jazz-cocktails' && (
           <div className="cocktails-grid">
-            {RESTAURANT_DATA.cocktails.map((cocktail, kIdx) => (
-              <div key={kIdx} className="cocktail-card glass-card">
+            {jazzCocktails.map((cocktail, idx) => (
+              <div key={idx} className="cocktail-card glass-card">
                 <div className="cocktail-header">
                   <span className="gold-badge">{cocktail.badge}</span>
                   <span className="cocktail-price font-serif text-gold">
@@ -225,7 +85,7 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
                   {lang === 'es' ? cocktail.ingredientsEs : cocktail.ingredientsEn}
                 </p>
                 <div className="cocktail-notes">
-                  <span className="notes-label">{lang === 'es' ? 'Perfil sensorial:' : 'Sensory Profile:'}</span>
+                  <span className="notes-label">{lang === 'es' ? 'Perfil acústico:' : 'Acoustic Profile:'}</span>
                   <span className="notes-value">{cocktail.notes}</span>
                 </div>
               </div>
@@ -233,11 +93,68 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
           </div>
         )}
 
-        {/* TAB 4: CELLAR ICONS */}
-        {activeMenuTab === 'cellar' && (
+        {/* TAB 2: HOUSE COCKTAILS */}
+        {activeTab === 'house-cocktails' && (
+          <div className="cocktails-grid">
+            {houseCocktails.map((cocktail, idx) => (
+              <div key={idx} className="cocktail-card glass-card">
+                <div className="cocktail-header">
+                  <span className="gold-badge">{cocktail.badge}</span>
+                  <span className="cocktail-price font-serif text-gold">
+                    {formatPrice(cocktail.priceEur, cocktail.priceUsd)}
+                  </span>
+                </div>
+                <h3 className="cocktail-name font-serif">{cocktail.name}</h3>
+                <p className="cocktail-ingredients font-editorial">
+                  {lang === 'es' ? cocktail.ingredientsEs : cocktail.ingredientsEn}
+                </p>
+                <div className="cocktail-notes">
+                  <span className="notes-label">{lang === 'es' ? 'Frecuencia:' : 'Frequency:'}</span>
+                  <span className="notes-value">{cocktail.notes}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* TAB 3: FOOD BITES */}
+        {activeTab === 'food-bites' && (
+          <div className="alacarte-grid">
+            <div className="alacarte-category-card glass-card" style={{ gridColumn: '1 / -1' }}>
+              <h3 className="alacarte-cat-title">
+                {lang === 'es' ? 'Bocados Servidos Hasta las 04:00 AM' : 'Bites Served Until 04:00 AM'}
+              </h3>
+              <div className="alacarte-items-list">
+                {RESTAURANT_DATA.foodBites.map((dish, dIdx) => (
+                  <div key={dIdx} className="alacarte-item-row">
+                    <div className="alacarte-item-info">
+                      <div className="item-name-price">
+                        <span className="item-name">{lang === 'es' ? dish.nameEs : dish.nameEn}</span>
+                        <span className="item-price font-serif text-gold">
+                          {formatPrice(dish.priceEur, dish.priceUsd)}
+                        </span>
+                      </div>
+                      <p className="item-desc font-editorial">
+                        {lang === 'es' ? dish.descEs : dish.descEn}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 4: WINES & CHAMPAGNE */}
+        {activeTab === 'wines' && (
           <div className="cellar-grid">
-            {RESTAURANT_DATA.cellarHighlights.map((wine, wIdx) => (
-              <div key={wIdx} className="cellar-wine-card glass-card">
+            {[
+              { name: "Dom Pérignon Vintage 2015", region: "Champagne, Francia", vintage: "2015", priceEur: 360, notes: "Tostados, avellana y burbuja de terciopelo" },
+              { name: "Krug Grande Cuvée 171ème", region: "Champagne, Francia", vintage: "Édition", priceEur: 420, notes: "Frutas confitadas, pan de especias y vibración infinita" },
+              { name: "Vega Sicilia Valbuena 5°", region: "Ribera del Duero", vintage: "2018", priceEur: 240, notes: "Fruta negra madura, cedro y taninos nobles sedosos" },
+              { name: "Chassagne-Montrachet 1er Cru", region: "Bourgogne, Francia", vintage: "2021", priceEur: 210, notes: "Mantequilla fresca, mineralidad y flores blancas" }
+            ].map((wine, idx) => (
+              <div key={idx} className="cellar-wine-card glass-card">
                 <div className="wine-card-top">
                   <div className="wine-vintage-tag font-serif">{wine.vintage}</div>
                   <span className="wine-price font-serif text-gold">
@@ -246,17 +163,26 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
                 </div>
                 <h3 className="wine-name font-serif">{wine.name}</h3>
                 <span className="wine-region">{wine.region}</span>
-                <p className="wine-tasting-notes font-editorial">
-                  «{wine.tastingNotes}»
-                </p>
+                <p className="wine-tasting-notes font-editorial">«{wine.notes}»</p>
                 <div className="wine-badge-row">
-                  <span className="gold-badge">{lang === 'es' ? 'Cava Climatizada 14°C' : 'Guarded at 14°C'}</span>
-                  <span className="gold-badge">{lang === 'es' ? 'Servicio Sommelier' : 'Sommelier Service'}</span>
+                  <span className="gold-badge">{lang === 'es' ? 'Servicio de Cubitera de Plata' : 'Silver Ice Bucket Service'}</span>
                 </div>
               </div>
             ))}
           </div>
         )}
+
+        {/* CTA */}
+        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+          <button 
+            type="button" 
+            className="btn-primary"
+            onClick={() => onOpenReservation()}
+          >
+            <Sparkles size={16} />
+            <span>{lang === 'es' ? 'Reservar Mesa o Botella VIP' : 'Reserve Table or VIP Bottle'}</span>
+          </button>
+        </div>
       </div>
     </section>
   );

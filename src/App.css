@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LA OCTAVA - MASTER LUXURY STYLESHEET
+   LA OCTAVA - JAZZ & PIANO BAR • SUB-VAULT HOUSE CLUB MASTER STYLESHEET
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -11,18 +11,18 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1.25rem 0;
+  padding: 1.1rem 0;
   transition: all 0.4s ease;
-  background: linear-gradient(180deg, rgba(18, 3, 6, 0.85) 0%, rgba(18, 3, 6, 0) 100%);
+  background: linear-gradient(180deg, rgba(18, 3, 6, 0.9) 0%, rgba(18, 3, 6, 0) 100%);
 }
 
 .navbar-scrolled {
-  padding: 0.8rem 0;
-  background: rgba(18, 3, 6, 0.92);
+  padding: 0.75rem 0;
+  background: rgba(18, 3, 6, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(235, 213, 193, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
 .nav-container {
@@ -34,22 +34,22 @@
 .brand-logo-wrap {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.85rem;
 }
 
 .brand-icon-frame {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--border-gold);
-  box-shadow: 0 0 15px rgba(207, 168, 116, 0.2);
+  box-shadow: 0 0 15px rgba(207, 168, 116, 0.25);
   transition: var(--transition-smooth);
 }
 
 .brand-logo-wrap:hover .brand-icon-frame {
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(207, 168, 116, 0.4);
+  box-shadow: 0 0 25px rgba(207, 168, 116, 0.45);
 }
 
 .brand-icon-img {
@@ -73,8 +73,8 @@
 }
 
 .brand-subtitle {
-  font-size: 0.65rem;
-  letter-spacing: 0.22em;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-gold);
 }
@@ -82,7 +82,7 @@
 .desktop-nav {
   display: none;
   align-items: center;
-  gap: 1.8rem;
+  gap: 1.6rem;
 }
 
 @media (min-width: 1024px) {
@@ -93,8 +93,8 @@
 
 .nav-link {
   font-family: var(--font-serif);
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-text-secondary);
   font-weight: 500;
@@ -125,26 +125,43 @@
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
+}
+
+/* Dual Audio Mode Selector */
+.audio-mode-selector {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(26, 5, 10, 0.7);
+  border: 1px solid rgba(235, 213, 193, 0.15);
+  border-radius: var(--radius-full);
+  padding: 2px 6px;
+  gap: 2px;
 }
 
 .audio-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 0.8rem;
+  gap: 0.35rem;
+  padding: 0.4rem 0.65rem;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(235, 213, 193, 0.15);
-  background: rgba(38, 8, 15, 0.4);
+  border: 1px solid transparent;
   color: var(--color-text-secondary);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  font-family: var(--font-serif);
+  letter-spacing: 0.05em;
   transition: var(--transition-fast);
 }
 
-.audio-btn:hover, .audio-btn.active {
+.audio-btn:hover {
+  color: var(--color-champagne);
+}
+
+.audio-btn.active {
+  background: rgba(82, 16, 30, 0.8);
   border-color: var(--color-gold);
-  color: var(--color-gold);
-  background: rgba(82, 16, 30, 0.4);
+  color: var(--color-gold-light);
+  box-shadow: 0 0 12px rgba(207, 168, 116, 0.25);
 }
 
 .sound-wave {
@@ -152,6 +169,8 @@
   align-items: flex-end;
   gap: 2px;
   height: 12px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 .sound-wave .bar {
@@ -174,7 +193,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.5rem 0.8rem;
+  padding: 0.45rem 0.75rem;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(235, 213, 193, 0.15);
   background: rgba(38, 8, 15, 0.4);
@@ -198,7 +217,7 @@
 @media (min-width: 768px) {
   .nav-reserve-cta {
     display: inline-flex;
-    padding: 0.65rem 1.4rem;
+    padding: 0.6rem 1.3rem;
     font-size: 0.75rem;
   }
 }
@@ -284,7 +303,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 9rem 0 5rem 0;
+  padding: 8.5rem 0 5rem 0;
   overflow: hidden;
 }
 
@@ -301,8 +320,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.03);
-  filter: brightness(0.7) contrast(1.1);
+  transform: scale(1.02);
+  filter: brightness(0.65) contrast(1.15);
+  transition: opacity 0.8s ease-in-out;
 }
 
 .hero-gradient-overlay {
@@ -312,8 +332,8 @@
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at center, rgba(18, 3, 6, 0.45) 0%, rgba(18, 3, 6, 0.92) 80%),
-    linear-gradient(180deg, rgba(18, 3, 6, 0.7) 0%, rgba(18, 3, 6, 0.2) 50%, rgba(18, 3, 6, 1) 100%);
+    radial-gradient(circle at center, rgba(18, 3, 6, 0.45) 0%, rgba(18, 3, 6, 0.93) 80%),
+    linear-gradient(180deg, rgba(18, 3, 6, 0.75) 0%, rgba(18, 3, 6, 0.25) 50%, rgba(18, 3, 6, 1) 100%);
 }
 
 .hero-content-container {
@@ -325,6 +345,60 @@
   align-items: center;
 }
 
+/* Interactive Level Switcher in Hero */
+.hero-level-switcher {
+  display: inline-flex;
+  padding: 0.4rem;
+  gap: 0.5rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 2rem;
+  border-color: rgba(207, 168, 116, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+}
+
+.level-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-secondary);
+  transition: var(--transition-smooth);
+}
+
+.level-switch-btn:hover {
+  color: var(--color-champagne);
+}
+
+.level-switch-btn.active {
+  background: linear-gradient(135deg, rgba(82, 16, 30, 0.9) 0%, rgba(38, 8, 15, 0.95) 100%);
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold-light);
+  box-shadow: 0 0 20px rgba(207, 168, 116, 0.3);
+}
+
+.switch-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.switch-level {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 700;
+}
+
+.switch-name {
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
 .hero-top-badge {
   display: inline-flex;
   align-items: center;
@@ -332,9 +406,9 @@
   background: rgba(38, 8, 15, 0.7);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-full);
-  padding: 0.4rem 1.2rem 0.4rem 0.4rem;
+  padding: 0.35rem 1.2rem 0.35rem 0.35rem;
   backdrop-filter: blur(12px);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   box-shadow: 0 0 25px rgba(207, 168, 116, 0.25);
 }
 
@@ -367,18 +441,18 @@
 }
 
 .badge-city {
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   letter-spacing: 0.15em;
   color: var(--color-champagne-dim);
 }
 
 .hero-headline {
-  font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.1rem, 5vw, 3.8rem);
   font-weight: 500;
   color: var(--color-cream);
-  max-width: 960px;
+  max-width: 980px;
   margin-bottom: 1.5rem;
-  line-height: 1.15;
+  line-height: 1.18;
 }
 
 .text-gold-gradient {
@@ -389,11 +463,11 @@
 }
 
 .hero-subline {
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
   color: var(--color-champagne-dim);
-  max-width: 760px;
+  max-width: 820px;
   margin-bottom: 2.5rem;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .hero-cta-group {
@@ -401,17 +475,17 @@
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
 }
 
 .hero-btn-main {
-  font-size: 0.9rem;
-  padding: 1rem 2.2rem;
+  font-size: 0.88rem;
+  padding: 0.95rem 2.2rem;
 }
 
 .hero-btn-sub {
-  font-size: 0.9rem;
-  padding: 1rem 2.2rem;
+  font-size: 0.88rem;
+  padding: 0.95rem 2.2rem;
 }
 
 /* Quick Booking Bar */
@@ -438,7 +512,7 @@
 
 @media (min-width: 1024px) {
   .booking-form-grid {
-    grid-template-columns: 1.4fr 1fr 1fr 1fr auto;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr auto;
     align-items: flex-end;
   }
 }
@@ -503,13 +577,13 @@
 }
 
 .stat-num {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   line-height: 1.1;
 }
 
 .stat-desc {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-secondary);
@@ -520,7 +594,7 @@
    3. CONCEPT SECTION
    -------------------------------------------------------------------------- */
 .concept-section {
-  padding: 7rem 0;
+  padding: 6.5rem 0;
   position: relative;
 }
 
@@ -653,10 +727,180 @@
 
 
 /* --------------------------------------------------------------------------
-   4. MENU & CELLAR SECTION
+   4. LINEUP SECTION (NEW)
+   -------------------------------------------------------------------------- */
+.lineup-section {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+.lineup-days-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.lineup-day-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  background: rgba(38, 8, 15, 0.4);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-text-secondary);
+  transition: var(--transition-smooth);
+}
+
+.lineup-day-btn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-champagne);
+}
+
+.lineup-day-btn.active {
+  background: rgba(82, 16, 30, 0.75);
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+  box-shadow: 0 0 20px rgba(207, 168, 116, 0.25);
+}
+
+.day-name {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.day-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-gold);
+}
+
+.lineup-card {
+  padding: 3rem;
+  border-color: var(--border-gold);
+}
+
+.lineup-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 768px) {
+  .lineup-card-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.day-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lineup-curator-title {
+  font-size: 1.35rem;
+  color: var(--color-cream);
+}
+
+.lineup-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .lineup-dual-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.lineup-stage-box {
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  background: rgba(18, 3, 6, 0.6);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition-smooth);
+}
+
+.lineup-stage-box:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+}
+
+.stage-jazz {
+  border-left: 3px solid var(--color-gold);
+}
+
+.stage-club {
+  border-left: 3px solid #e63946;
+}
+
+.stage-top-tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stage-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--color-champagne);
+}
+
+.stage-time {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.stage-artist-name {
+  font-size: 1.45rem;
+  color: var(--color-cream);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.stage-artist-desc {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.stage-perks-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. MENU & COCKTAILS SECTION
    -------------------------------------------------------------------------- */
 .menu-section {
-  padding: 7rem 0;
+  padding: 6.5rem 0;
   position: relative;
 }
 
@@ -694,250 +938,6 @@
   border-color: var(--color-gold);
   color: var(--color-gold-light);
   box-shadow: 0 0 25px rgba(207, 168, 116, 0.2);
-}
-
-/* Tasting Banner */
-.tasting-hero-banner {
-  padding: 2.5rem;
-  margin-bottom: 3rem;
-  border-color: var(--border-gold);
-}
-
-.banner-badge-group {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 1.25rem;
-}
-
-.banner-duration {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  color: var(--color-champagne-dim);
-}
-
-.banner-pricing-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .banner-pricing-row {
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    align-items: center;
-  }
-}
-
-.pricing-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.pricing-title {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.4rem;
-}
-
-.pricing-value {
-  font-size: 1.85rem;
-  font-weight: 700;
-}
-
-.pricing-sub {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  font-weight: 400;
-}
-
-.pricing-divider {
-  display: none;
-  width: 1px;
-  height: 45px;
-  background: var(--border-subtle);
-}
-
-@media (min-width: 768px) {
-  .pricing-divider {
-    display: block;
-  }
-}
-
-/* Tasting Steps Accordion Grid */
-.tasting-steps-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 3rem;
-}
-
-@media (min-width: 768px) {
-  .tasting-steps-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.tasting-step-card {
-  padding: 1.5rem;
-  cursor: pointer;
-}
-
-.tasting-step-card.is-open {
-  border-color: var(--color-gold);
-  background: rgba(59, 10, 20, 0.5);
-}
-
-.step-card-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.step-tag-circle {
-  width: 38px;
-  height: 38px;
-  border-radius: var(--radius-full);
-  background: rgba(207, 168, 116, 0.15);
-  border: 1px solid var(--border-gold);
-  color: var(--color-gold);
-  font-size: 0.75rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.step-title-wrap {
-  flex-grow: 1;
-}
-
-.step-dish-name {
-  font-size: 1.05rem;
-  color: var(--color-cream);
-  line-height: 1.3;
-}
-
-.step-toggle-btn {
-  color: var(--color-gold);
-}
-
-.step-expanded-content {
-  margin-top: 1.25rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.step-dish-desc {
-  font-size: 1.15rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-}
-
-.step-pairing-box {
-  padding: 1rem;
-  background: rgba(18, 3, 6, 0.6);
-  border-radius: var(--radius-sm);
-  border-left: 2px solid var(--color-gold);
-  margin-bottom: 1rem;
-}
-
-.pairing-label {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-gold);
-  margin-bottom: 0.3rem;
-}
-
-.pairing-wine-name {
-  font-size: 0.95rem;
-  color: var(--color-champagne);
-}
-
-.step-allergens-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.allergens-tag {
-  font-size: 0.7rem;
-  color: var(--color-text-muted);
-}
-
-.allergen-pill {
-  font-size: 0.65rem;
-  padding: 0.15rem 0.6rem;
-  background: rgba(235, 213, 193, 0.08);
-  border-radius: var(--radius-full);
-  color: var(--color-champagne-dim);
-}
-
-.tasting-bottom-cta {
-  text-align: center;
-}
-
-/* A La Carte Grid */
-.alacarte-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 1024px) {
-  .alacarte-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.alacarte-category-card {
-  padding: 2.5rem;
-}
-
-.alacarte-cat-title {
-  font-size: 1.4rem;
-  color: var(--color-gold-light);
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--border-gold);
-  padding-bottom: 0.75rem;
-}
-
-.alacarte-items-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-
-.item-name-price {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.4rem;
-}
-
-.item-name {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  color: var(--color-cream);
-}
-
-.item-price {
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.item-desc {
-  font-size: 1.15rem;
-  color: var(--color-text-secondary);
 }
 
 /* Cocktails Grid */
@@ -1025,147 +1025,64 @@
   gap: 0.5rem;
 }
 
-
-/* --------------------------------------------------------------------------
-   5. SOMMELIER EXPERIENCE SECTION
-   -------------------------------------------------------------------------- */
-.sommelier-section {
-  padding: 7rem 0;
-  position: relative;
-}
-
-.sommelier-interactive-grid {
+/* A La Carte Grid */
+.alacarte-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
 }
 
-@media (min-width: 1024px) {
-  .sommelier-interactive-grid {
-    grid-template-columns: 1fr 1.3fr;
-    gap: 3rem;
-  }
-}
-
-.sommelier-controls-card {
+.alacarte-category-card {
   padding: 2.5rem;
 }
 
-.controls-title {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 1.05rem;
-  color: var(--color-cream);
-  margin-bottom: 1.25rem;
+.alacarte-cat-title {
+  font-size: 1.4rem;
+  color: var(--color-gold-light);
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-gold);
+  padding-bottom: 0.75rem;
 }
 
-.vibes-selector-grid, .profiles-selector-grid {
+.alacarte-items-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.75rem;
+  gap: 1.75rem;
 }
 
-@media (min-width: 640px) {
-  .vibes-selector-grid, .profiles-selector-grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (min-width: 768px) {
+  .alacarte-items-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
   }
 }
 
-.vibe-btn, .profile-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.9rem 1.1rem;
-  border-radius: var(--radius-sm);
-  background: rgba(18, 3, 6, 0.6);
-  border: 1px solid rgba(235, 213, 193, 0.12);
-  color: var(--color-text-secondary);
-  text-align: left;
-  transition: var(--transition-fast);
-}
-
-.vibe-btn:hover, .profile-btn:hover {
-  border-color: rgba(207, 168, 116, 0.4);
-  color: var(--color-champagne);
-}
-
-.vibe-btn.active, .profile-btn.active {
-  background: rgba(82, 16, 30, 0.6);
-  border-color: var(--color-gold);
-  color: var(--color-gold-light);
-  box-shadow: 0 0 15px rgba(207, 168, 116, 0.2);
-}
-
-.vibe-icon {
-  color: var(--color-gold);
-}
-
-.vibe-label, .profile-name {
-  font-size: 0.82rem;
-  font-weight: 500;
-}
-
-.sommelier-result-card {
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.result-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.result-temp {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: var(--color-gold);
-}
-
-.flight-title {
-  font-size: 1.6rem;
-  color: var(--color-cream);
-  margin-bottom: 2rem;
-  line-height: 1.3;
-}
-
-.flight-wines-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-}
-
-.flight-wine-item {
-  display: flex;
-  gap: 1.25rem;
-  background: rgba(18, 3, 6, 0.5);
+.alacarte-item-row {
+  background: rgba(18, 3, 6, 0.4);
   padding: 1.25rem;
   border-radius: var(--radius-sm);
   border-left: 2px solid var(--color-gold);
 }
 
-.flight-step-badge {
-  font-size: 0.75rem;
-  color: var(--color-gold);
-  font-weight: 700;
-  text-transform: uppercase;
-  flex-shrink: 0;
+.item-name-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
 }
 
-.flight-wine-name {
+.item-name {
+  font-family: var(--font-serif);
   font-size: 1.05rem;
   color: var(--color-cream);
-  margin-bottom: 0.3rem;
 }
 
-.flight-wine-note {
+.item-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.item-desc {
   font-size: 1.15rem;
   color: var(--color-text-secondary);
 }
@@ -1175,7 +1092,7 @@
    6. SPACES GALLERY SECTION
    -------------------------------------------------------------------------- */
 .spaces-section {
-  padding: 7rem 0;
+  padding: 6.5rem 0;
   position: relative;
 }
 
@@ -1336,10 +1253,10 @@
 
 
 /* --------------------------------------------------------------------------
-   7. MEMBERSHIP SECTION
+   7. MEMBERSHIP SECTION (BLACK KEY)
    -------------------------------------------------------------------------- */
 .membership-section {
-  padding: 7rem 0;
+  padding: 6.5rem 0;
   position: relative;
 }
 
@@ -1367,7 +1284,7 @@
 
 .membership-tier-card.is-recommended {
   border-color: var(--color-gold);
-  background: linear-gradient(180deg, rgba(82, 16, 30, 0.7) 0%, rgba(26, 5, 10, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(82, 16, 30, 0.75) 0%, rgba(26, 5, 10, 0.9) 100%);
   box-shadow: 0 0 35px rgba(207, 168, 116, 0.25);
   transform: translateY(-8px);
 }
@@ -1400,13 +1317,13 @@
 }
 
 .tier-name {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   color: var(--color-cream);
   margin-bottom: 0.5rem;
 }
 
 .tier-price-box {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 700;
 }
 
@@ -1460,7 +1377,7 @@
    8. REVIEWS & PRESS SECTION
    -------------------------------------------------------------------------- */
 .press-section {
-  padding: 7rem 0;
+  padding: 6.5rem 0;
   position: relative;
 }
 
@@ -1479,7 +1396,7 @@
 }
 
 .press-quote-text {
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-size: clamp(1.35rem, 2.3vw, 1.85rem);
   font-style: italic;
   color: var(--color-champagne);
   max-width: 860px;
@@ -1600,7 +1517,7 @@
    9. LOCATION & CONTACT SECTION
    -------------------------------------------------------------------------- */
 .location-section {
-  padding: 7rem 0;
+  padding: 6.5rem 0;
   position: relative;
 }
 
@@ -1845,7 +1762,7 @@
 
 
 /* --------------------------------------------------------------------------
-   10. MODALS & OVERLAYS
+   10. MODALS & LIGHTBOX
    -------------------------------------------------------------------------- */
 .modal-backdrop {
   position: fixed;
@@ -2105,54 +2022,6 @@
   color: var(--color-gold-light);
 }
 
-.experience-choice-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-}
-
-@media (min-width: 500px) {
-  .experience-choice-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.exp-card {
-  padding: 1.25rem;
-  border-radius: var(--radius-sm);
-  background: rgba(18, 3, 6, 0.6);
-  border: 1px solid var(--border-subtle);
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.exp-card.active {
-  background: rgba(82, 16, 30, 0.7);
-  border-color: var(--color-gold);
-  box-shadow: 0 0 15px rgba(207, 168, 116, 0.2);
-}
-
-.exp-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.4rem;
-}
-
-.exp-name {
-  font-size: 0.95rem;
-  color: var(--color-cream);
-}
-
-.exp-price {
-  font-weight: 700;
-}
-
-.exp-desc {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-}
-
 .enhancements-list {
   display: flex;
   flex-direction: column;
@@ -2260,7 +2129,7 @@
   justify-content: center;
 }
 
-/* Membership Modal Tiles */
+/* Membership Modal */
 .membership-modal-tiers-grid {
   display: grid;
   grid-template-columns: 1fr;

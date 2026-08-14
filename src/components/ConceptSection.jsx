@@ -1,105 +1,103 @@
 import React, { useState } from 'react';
-import { Sparkles, Wine, Flame, Shield, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Music, Disc, Sparkles, KeyRound, ArrowUpRight, Flame, Volume2 } from 'lucide-react';
 
 export default function ConceptSection({ lang, onOpenReservation, onOpenMembership }) {
   const [activeTab, setActiveTab] = useState(0);
 
   const pillars = [
     {
-      icon: <Sparkles size={24} className="text-gold" />,
-      tag: "I. Gastronomía",
-      titleEs: "L'Atelier: Menú Sinfonía de 8 Pasos",
-      titleEn: "L'Atelier: 8-Step Symphony Journey",
-      excerptEs: "Una composición coreografiada donde cada pase es una nota que despierta un recuerdo dormido.",
-      excerptEn: "A choreographed culinary composition where each plate represents a harmonious note.",
-      detailsEs: "Ingredientes nobles de origen salvaje —caviar Oscietra, trufa negra melanosporum, wagyu A5 Miyazaki y mariscos del Atlántico— tratados con técnicas de cocción al sarmiento, destilaciones al vacío y maduraciones en cámara de sal.",
-      detailsEn: "Pristine wild-caught ingredients —Oscietra caviar, black truffles, Miyazaki A5 Wagyu, and Atlantic seafood— elevated through wood-smoke infusions, vacuum distillations, and pink Himalayan salt chamber aging.",
-      quoteEs: "«Cocinar no es transformar materia, es suscitar emociones imposibles de verbalizar.»",
-      quoteEn: "«Culinary mastery is not transforming matter, but eliciting emotions that transcend words.»",
-      ctaEs: "Explorar el Menú",
-      ctaEn: "Explore the Menu",
-      action: "menu"
+      icon: <Music size={24} className="text-gold" />,
+      tag: "PISO 01 • JAZZ & PIANO BAR",
+      titleEs: "El Santuario del Steinway & Terciopelo Burdeos",
+      titleEn: "The Steinway Grand Piano & Merlot Velvet Sanctuary",
+      excerptEs: "Afinado cada tarde a 440 Hz, nuestro gran cola preside un salón de acústica perfecta para veladas íntimas.",
+      excerptEn: "Tuned daily to 440 Hz, our concert grand piano commands an intimate room crafted for supreme acoustic warmth.",
+      detailsEs: "Cada noche, maestros del piano clásico y moderno, tríos de contrabajo y saxofón, y vocalistas de jazz llenan la atmósfera mientras disfrutas de cócteles clásicos ahumados y bocados gourmet a la luz de las velas.",
+      detailsEn: "Every evening, master pianists, acoustic double bass trios, and jazz vocalists fill the air while guests sip wood-smoked classics and delicate raw bar bites by candlelight.",
+      quoteEs: "«El jazz no es sólo música; es una conversación íntima que ocurre en tiempo real entre el piano y tu copa.»",
+      quoteEn: "«Jazz is not merely music; it is an intimate dialogue unfolding between the piano and your glass.»",
+      ctaEs: "Reservar en Piano Bar",
+      ctaEn: "Book Piano Bar Table",
+      action: "reserve-piano"
     },
     {
-      icon: <Wine size={24} className="text-gold" />,
-      tag: "II. La Bóveda",
-      titleEs: "La Cava Subterránea & Grand Crus",
-      titleEn: "The Subterranean Vault & Grand Crus",
-      excerptEs: "850 referencias mundiales protegidas a 14°C en galerías de piedra centenaria.",
-      excerptEn: "Over 850 international references guarded at a strict 14°C inside historic stone vaults.",
-      detailsEs: "Verticales históricas completas de Château Petrus, Domaine de la Romanée-Conti, Vega Sicilia Único y los Champagnes más exclusivos del planeta. Ofrecemos catas a ciegas en copa de cristal austríaco soplado a mano.",
-      detailsEn: "Complete historic verticals of Château Petrus, Domaine de la Romanée-Conti, Vega Sicilia Único, and the rarest Champagnes on earth. Guided private blind tastings served in hand-blown Austrian crystal stemware.",
-      quoteEs: "«El tiempo es el único enólogo que no acepta sobornos.»",
-      quoteEn: "«Time is the only winemaker who accepts no compromises.»",
-      ctaEs: "Descubrir la Cava",
-      ctaEn: "Discover the Cellar",
-      action: "sommelier"
+      icon: <Disc size={24} className="text-gold" />,
+      tag: "NIVEL -01 • EL SUB-VAULT",
+      titleEs: "El Club de House Subterráneo en Bóvedas Centenarias",
+      titleEn: "The Subterranean House Club Inside Ancient Vaults",
+      excerptEs: "Descendiendo por una escalera discreta de piedra, la energía se transforma en puro Deep & Melodic House.",
+      excerptEn: "Descending through a discrete stone stairwell, the frequency transforms into raw, hypnotic Deep House.",
+      detailsEs: "Construido en los antiguos sótanos abovedados de la Castellana, equipado con una torre de sonido Funktion-One diseñada a medida, niebla carmesí y una cabina de DJ con platos Technics para sesiones en vinilo hasta las 06:00.",
+      detailsEn: "Housed within historic brick vaults, engineered with custom Funktion-One sound stacks, crimson laser haze, and Technics 1210 MK7 vinyl turntables running until 06:00.",
+      quoteEs: "«Cuando el reloj marca la medianoche, las frecuencias bajas toman el control del templo.»",
+      quoteEn: "«When midnight strikes, the low frequencies assume total command of the sanctuary.»",
+      ctaEs: "Acceso al House Club",
+      ctaEn: "Access House Club",
+      action: "reserve-club"
     },
     {
       icon: <Flame size={24} className="text-gold" />,
-      tag: "III. Altura & Fuego",
-      titleEs: "Rooftop 360° & Alquimia Botánica",
-      titleEn: "360° Rooftop & Botanical Alchemy",
-      excerptEs: "El horizonte nocturno de la ciudad bañado por la lumbre de chimeneas y cócteles de autor.",
-      excerptEn: "The glittering city skyline framed by dancing flames, soft ambient jazz, and signature alchemy.",
-      detailsEs: "Mixología conceptual con destilados ahumados in situ, hielo tallado a mano con cuarzo, infusiones de hierbas silvestres y espumas de Champagne vintage. Un refugio cosmopolita con ambiente sonoro curado.",
-      detailsEn: "Conceptual mixology featuring in-house smoked spirits, diamond-carved artisanal ice, wild botanical reductions, and vintage Champagne clouds.",
-      quoteEs: "«Un cóctel no es una bebida; es una pausa sagrada en el tumulto del mundo.»",
-      quoteEn: "«A cocktail is not just a drink; it is a sacred pause in the world's rush.»",
-      ctaEs: "Reservar en Terraza",
-      ctaEn: "Reserve on Rooftop",
-      action: "reserve"
+      tag: "ALQUIMIA • CÓCTELES DE AUTOR",
+      titleEs: "Mixología Inspirada en Acordes de Jazz & Frecuencias",
+      titleEn: "Mixology Inspired by Jazz Chords & Sound Frequencies",
+      excerptEs: "Bebidas que evolucionan desde notas amaderadas y complejas hasta elixires energéticos de madrugada.",
+      excerptEn: "Spirits that transition from warm oak-aged jazz classics to high-voltage midnight elixirs.",
+      detailsEs: "Nuestra carta divide sus creaciones entre las 'Velvet Jazz Signatures' (Bourbon macerado, jereces añejos, perfume de trufa) y las 'Sub-Vault Energy Libations' (Mezcal volcánico, Nitro Espresso con café Geisha de especialidad).",
+      detailsEn: "Our cocktail list is split between 'Velvet Jazz Signatures' (vanilla-infused bourbons, vintage ports, truffle essences) and 'Sub-Vault Energy Libations' (volcanic mezcals, Nitro Geisha espresso martinis).",
+      quoteEs: "«El hielo se talla con cuarzo; el destilado se sirve al compás de la música.»",
+      quoteEn: "«Artisanal diamond ice; spirits poured strictly to the cadence of the sound.»",
+      ctaEs: "Ver Carta de Cócteles",
+      ctaEn: "Explore Drinks Menu",
+      action: "menu"
     },
     {
-      icon: <Shield size={24} className="text-gold" />,
-      tag: "IV. Círculo Íntimo",
-      titleEs: "Salón VIII & Club de Socios Privado",
-      titleEn: "Salon VIII & Private Members Sanctuary",
-      excerptEs: "El enclave más discreto para coleccionistas, diplomáticos y amantes de la privacidad absoluta.",
-      excerptEn: "The most discrete enclave tailored for collectors, executives, and connoisseurs of true privacy.",
-      detailsEs: "Casilleros privados con cerradura biométrica para almacenar añadas personales, salón de fumadores con humidor de habanos reserva, servicio de chofer privado y reservas directas por línea roja de mayordomía.",
-      detailsEn: "Private biometric wine lockers for personal reserves, walk-in humidor with vintage cigars, luxury chauffeur service, and direct concierge hotline.",
-      quoteEs: "«El verdadero lujo no hace ruido: se reconoce en silencio.»",
-      quoteEn: "«True luxury makes no noise: it recognizes itself in silence.»",
-      ctaEs: "Solicitar Invitación",
-      ctaEn: "Request Invitation",
+      icon: <KeyRound size={24} className="text-gold" />,
+      tag: "PRIVADO • LLAVE NEGRA",
+      titleEs: "El Círculo de la Llave Negra: Ambos Mundos Sin Límites",
+      titleEn: "The Black Key Circle: Both Worlds Without Boundaries",
+      excerptEs: "El pase definitivo para quienes desean cenar escuchando un solo de piano y bajar a bailar sin colas.",
+      excerptEn: "The ultimate pass for connoisseurs who dine by the grand piano and transition seamlessly to the club floor.",
+      detailsEs: "Socios titulares disfrutan de acceso preferente permanente a ambos niveles, casillero personal para botellas privadas en la cava del sótano, línea directa de WhatsApp con la dirección y acceso a sesiones secretas de piano después del cierre.",
+      detailsEn: "Keyholders enjoy permanent skip-the-line VIP entry to both floors, personal private spirit lockers in the cellar vault, direct concierge access, and invitations to secret lock-in jam sessions.",
+      quoteEs: "«Una sola llave abre las dos caras de la noche madrileña.»",
+      quoteEn: "«A single key unlocks both faces of Madrid’s defining night.»",
+      ctaEs: "Solicitar Llave Negra",
+      ctaEn: "Apply for Black Key",
       action: "membership"
     }
   ];
 
   const handlePillarAction = (action) => {
-    if (action === 'reserve') onOpenReservation();
+    if (action === 'reserve-piano') onOpenReservation({ level: 'piano' });
+    else if (action === 'reserve-club') onOpenReservation({ level: 'club' });
     else if (action === 'membership') onOpenMembership();
     else if (action === 'menu') {
-      const el = document.getElementById('menu');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    } else if (action === 'sommelier') {
-      const el = document.getElementById('sommelier');
+      const el = document.getElementById('cocteles');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <section className="concept-section" id="concepto">
+    <section className="concept-section" id="niveles">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <span className="section-subtitle">
-            {lang === 'es' ? 'La Esencia de Nuestra Casa' : 'The Essence of Our House'}
+            {lang === 'es' ? 'La Dualidad de La Octava' : 'The Dual Identity of La Octava'}
           </span>
           <h2 className="section-title">
-            {lang === 'es' ? 'El Misterio de la Octava' : 'The Mystery of the Eighth'}
+            {lang === 'es' ? 'Dos Frecuencias. Un Santuario.' : 'Two Frequencies. One Sanctuary.'}
           </h2>
           <p className="section-desc">
             {lang === 'es'
-              ? 'En la música, la octava es la nota que eleva la escala a una frecuencia superior. En La Octava, es el espacio donde el gusto, el olfato, la vista y el espíritu alcanzan la plenitud.'
-              : 'In music, an octave is the note that lifts the scale into a higher resonance. At La Octava, it is the threshold where taste, scent, sight, and spirit achieve absolute harmony.'}
+              ? 'Arriba, la calidez acústica del piano y el jazz en directo. Abajo, el pulso envolvente de la música electrónica en nuestras bóvedas subterráneas.'
+              : 'Above, the acoustic warmth of live grand piano jazz. Below, the hypnotic subterranean pulse of deep house inside ancient brick vaults.'}
           </p>
         </div>
 
-        {/* Interactive Pillars Grid */}
+        {/* Interactive Layout */}
         <div className="concept-layout">
-          {/* Tab Navigation */}
+          {/* Tabs */}
           <div className="concept-nav-column">
             {pillars.map((pillar, idx) => (
               <button
@@ -119,7 +117,7 @@ export default function ConceptSection({ lang, onOpenReservation, onOpenMembersh
             ))}
           </div>
 
-          {/* Active Pillar Card */}
+          {/* Active Detail Card */}
           <div className="concept-detail-column">
             <div className="glass-card concept-detail-card">
               <div className="detail-card-badge">

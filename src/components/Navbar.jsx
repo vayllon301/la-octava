@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Globe, Menu, X, Calendar, Sparkles, PhoneCall } from 'lucide-react';
+import { Volume2, VolumeX, Globe, Menu, X, Calendar, Sparkles, Disc, Music } from 'lucide-react';
 import { soundEngine } from '../utils/soundEngine';
 
 export default function Navbar({ 
@@ -13,6 +13,7 @@ export default function Navbar({
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [audioMode, setAudioMode] = useState('jazz'); // 'jazz' or 'house'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,14 +32,23 @@ export default function Navbar({
     setIsPlayingAudio(active);
   };
 
+  const switchAudioMode = (mode) => {
+    setAudioMode(mode);
+    soundEngine.setMode(mode);
+    if (!isPlayingAudio) {
+      soundEngine.play();
+      setIsPlayingAudio(true);
+    }
+  };
+
   const navLinks = [
-    { href: "#concepto", labelEs: "El Concepto", labelEn: "The Concept" },
-    { href: "#menu", labelEs: "Menús & Cava", labelEn: "Menus & Cellar" },
-    { href: "#sommelier", labelEs: "Maridaje", labelEn: "Sommelier Flight" },
-    { href: "#espacios", labelEs: "Los Espacios", labelEn: "The Spaces" },
-    { href: "#membresia", labelEs: "Membresía", labelEn: "Membership" },
-    { href: "#prensa", labelEs: "Críticas & Guía", labelEn: "Press & Awards" },
-    { href: "#contacto", labelEs: "Ubicación", labelEn: "Contact" }
+    { href: "#niveles", labelEs: "Los 2 Niveles", labelEn: "The 2 Levels" },
+    { href: "#cartel", labelEs: "Cartel Semanal", labelEn: "Weekly Lineup" },
+    { href: "#cocteles", labelEs: "Cócteles & Carta", labelEn: "Cocktails & Bites" },
+    { href: "#espacios", labelEs: "Piano & Sótano", labelEn: "Spaces" },
+    { href: "#membresia", labelEs: "Llave Negra VIP", labelEn: "Black Key VIP" },
+    { href: "#prensa", labelEs: "Críticas", labelEn: "Press & Sound" },
+    { href: "#contacto", labelEs: "Acceso & Horarios", labelEn: "Access & Hours" }
   ];
 
   return (
@@ -52,7 +62,7 @@ export default function Navbar({
           <div className="brand-text">
             <span className="brand-title">LA OCTAVA</span>
             <span className="brand-subtitle">
-              {lang === 'es' ? 'Alta Cocina & Cava' : 'Haute Cuisine & Cellar'}
+              {lang === 'es' ? 'Jazz Bar • House Club' : 'Jazz Bar • House Club'}
             </span>
           </div>
         </a>
@@ -72,30 +82,42 @@ export default function Navbar({
 
         {/* Actions & Utilities */}
         <div className="nav-actions">
-          {/* Ambient Soundscape Button */}
-          <button 
-            type="button"
-            className={`audio-btn ${isPlayingAudio ? 'active' : ''}`}
-            onClick={toggleSound}
-            title={isPlayingAudio ? (lang === 'es' ? "Silenciar Lounge Audio" : "Mute Lounge Audio") : (lang === 'es' ? "Activar Música Lounge" : "Play Ambient Lounge Soundscape")}
-            aria-label="Toggle ambient music"
-          >
-            {isPlayingAudio ? (
-              <>
-                <Volume2 size={16} className="text-gold" />
-                <span className="sound-wave">
-                  <span className="bar bar-1"></span>
-                  <span className="bar bar-2"></span>
-                  <span className="bar bar-3"></span>
-                </span>
-              </>
-            ) : (
-              <>
-                <VolumeX size={16} />
-                <span className="sound-label">{lang === 'es' ? 'Lounge' : 'Lounge'}</span>
-              </>
+          {/* Dual Audio Selector (Jazz / House) */}
+          <div className="audio-mode-selector">
+            <button 
+              type="button"
+              className={`audio-btn ${isPlayingAudio && audioMode === 'jazz' ? 'active' : ''}`}
+              onClick={() => {
+                if (isPlayingAudio && audioMode === 'jazz') toggleSound();
+                else switchAudioMode('jazz');
+              }}
+              title="Escuchar Jazz Piano Lounge"
+            >
+              <Music size={14} />
+              <span className="sound-label">Jazz</span>
+            </button>
+
+            <button 
+              type="button"
+              className={`audio-btn ${isPlayingAudio && audioMode === 'house' ? 'active' : ''}`}
+              onClick={() => {
+                if (isPlayingAudio && audioMode === 'house') toggleSound();
+                else switchAudioMode('house');
+              }}
+              title="Escuchar Sub-Vault House Beats"
+            >
+              <Disc size={14} />
+              <span className="sound-label">House</span>
+            </button>
+
+            {isPlayingAudio && (
+              <span className="sound-wave">
+                <span className="bar bar-1"></span>
+                <span className="bar bar-2"></span>
+                <span className="bar bar-3"></span>
+              </span>
             )}
-          </button>
+          </div>
 
           {/* Currency Toggle */}
           <button 
@@ -123,7 +145,7 @@ export default function Navbar({
             type="button"
             id="nav-reserve-btn"
             className="btn-primary nav-reserve-cta"
-            onClick={onOpenReservation}
+            onClick={() => onOpenReservation()}
           >
             <Calendar size={14} />
             <span>{lang === 'es' ? 'Reservar' : 'Reserve'}</span>
@@ -149,7 +171,7 @@ export default function Navbar({
               <img src="/icon.jpeg" alt="Logo" className="mobile-drawer-icon" />
               <div>
                 <div className="brand-title">LA OCTAVA</div>
-                <div className="brand-subtitle">Madrid • Rooftop & Cava</div>
+                <div className="brand-subtitle">Jazz & Piano Bar • Sub-Vault House Club</div>
               </div>
             </div>
 
@@ -176,7 +198,7 @@ export default function Navbar({
                 }}
               >
                 <Calendar size={16} />
-                {lang === 'es' ? 'Reservar Mesa' : 'Book a Table'}
+                {lang === 'es' ? 'Reservar Mesa o Pase VIP' : 'Book Table or VIP Pass'}
               </button>
 
               <button 
@@ -188,7 +210,7 @@ export default function Navbar({
                 }}
               >
                 <Sparkles size={16} />
-                {lang === 'es' ? 'Solicitar Membresía' : 'Private Membership'}
+                {lang === 'es' ? 'Membresía Llave Negra' : 'Black Key Membership'}
               </button>
             </div>
           </div>

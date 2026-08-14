@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ConceptSection from './components/ConceptSection';
+import LineupSection from './components/LineupSection';
 import MenuSection from './components/MenuSection';
-import SommelierExperience from './components/SommelierExperience';
 import SpacesGallery from './components/SpacesGallery';
 import MembershipSection from './components/MembershipSection';
 import ReviewsAndPress from './components/ReviewsAndPress';
@@ -24,7 +24,7 @@ export default function App() {
 
   // Membership Modal state
   const [isMembershipOpen, setIsMembershipOpen] = useState(false);
-  const [selectedMembershipTier, setSelectedMembershipTier] = useState('amber-vip');
+  const [selectedMembershipTier, setSelectedMembershipTier] = useState('black-key');
 
   // Lightbox Modal state
   const [lightboxData, setLightboxData] = useState({ isOpen: false, image: '', title: '' });
@@ -34,7 +34,7 @@ export default function App() {
     setIsReservationOpen(true);
   };
 
-  const handleOpenMembership = (tier = 'amber-vip') => {
+  const handleOpenMembership = (tier = 'black-key') => {
     setSelectedMembershipTier(tier);
     setIsMembershipOpen(true);
   };
@@ -49,7 +49,7 @@ export default function App() {
 
   return (
     <div className="site-wrapper">
-      {/* Top Fixed Luxury Navigation */}
+      {/* Top Fixed Navigation with Dual Soundscape Player */}
       <Navbar 
         lang={lang}
         setLang={setLang}
@@ -61,52 +61,52 @@ export default function App() {
 
       {/* Main Page Content */}
       <main>
-        {/* 1. Cinematic Hero with Instant Booking Widget */}
+        {/* 1. Cinematic Hero with Interactive Level Switcher (Jazz Piano Bar vs Sub-Vault House Club) */}
         <HeroSection 
           lang={lang}
           onOpenReservation={handleOpenReservation}
           onOpenMembership={() => handleOpenMembership()}
         />
 
-        {/* 2. Philosophy & The 4 Pillars */}
+        {/* 2. The Two Levels & Dual Frequency Concept */}
         <ConceptSection 
           lang={lang}
           onOpenReservation={handleOpenReservation}
           onOpenMembership={() => handleOpenMembership()}
         />
 
-        {/* 3. Menus, 8-Step Symphony & Grand Cellar */}
+        {/* 3. Live Weekly Lineup (Tuesday to Sunday Jazz & House Schedule) */}
+        <LineupSection 
+          lang={lang}
+          onOpenReservation={handleOpenReservation}
+        />
+
+        {/* 4. Cocktails, Liquid Alchemy & Late Night Gourmet Bites */}
         <MenuSection 
           lang={lang}
           currency={currency}
           onOpenReservation={handleOpenReservation}
         />
 
-        {/* 4. Sommelier Flight Interactive Engine */}
-        <SommelierExperience 
-          lang={lang}
-          onOpenReservation={handleOpenReservation}
-        />
-
-        {/* 5. Architectural Spaces Showcase */}
+        {/* 5. Architectural Spaces (Steinway Grand Piano Bar, Sub-Vault Club, Vinyl Bar, VIP Booth) */}
         <SpacesGallery 
           lang={lang}
           onOpenReservation={handleOpenReservation}
           onOpenLightbox={handleOpenLightbox}
         />
 
-        {/* 6. Private Members Club & Privileges */}
+        {/* 6. Black Key Society & Private VIP Privileges */}
         <MembershipSection 
           lang={lang}
           onOpenMembership={handleOpenMembership}
         />
 
-        {/* 7. Michelin Accolades & Press Reviews */}
+        {/* 7. Rolling Stone, DownBeat, Mixmag Press & Sound Accolades */}
         <ReviewsAndPress 
           lang={lang}
         />
 
-        {/* 8. Location, Valet, Dress Code & Concierge */}
+        {/* 8. Location, Doors & Hours */}
         <LocationAndContact 
           lang={lang}
           onOpenReservation={handleOpenReservation}
@@ -120,7 +120,7 @@ export default function App() {
         onOpenMembership={() => handleOpenMembership()}
       />
 
-      {/* Multi-Step Reservation Modal */}
+      {/* Multi-Step Reservation & VIP Pass Modal */}
       <ReservationModal 
         isOpen={isReservationOpen}
         onClose={() => setIsReservationOpen(false)}
@@ -129,7 +129,7 @@ export default function App() {
         initialData={reservationInitialData}
       />
 
-      {/* Private Membership Admission Modal */}
+      {/* Black Key VIP Admission Modal */}
       <MembershipModal 
         isOpen={isMembershipOpen}
         onClose={() => setIsMembershipOpen(false)}

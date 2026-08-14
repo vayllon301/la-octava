@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Calendar, Clock, Users, Compass, Wine, Sparkles, CheckCircle2, Download, MessageSquare, ArrowRight, ArrowLeft } from 'lucide-react';
+import { X, Calendar, Clock, Users, Music, Disc, Sparkles, CheckCircle2, Download, MessageSquare, ArrowRight, ArrowLeft } from 'lucide-react';
 import { RESTAURANT_DATA } from '../data/restaurantData';
 
 export default function ReservationModal({ 
@@ -10,18 +10,17 @@ export default function ReservationModal({
   initialData = {} 
 }) {
   const [step, setStep] = useState(1);
-  const [space, setSpace] = useState(initialData.space || 'salon-principal');
+  const [level, setLevel] = useState(initialData.level || 'piano');
+  const [space, setSpace] = useState(initialData.space || 'piano-table');
   const [date, setDate] = useState(initialData.date || new Date().toISOString().split('T')[0]);
   const [time, setTime] = useState(initialData.time || '21:00');
   const [guests, setGuests] = useState(initialData.guests || '2');
-  const [experience, setExperience] = useState(initialData.experience || 'tasting-menu');
-  const [addWinePairing, setAddWinePairing] = useState(true);
-  const [addWelcomeChampagne, setAddWelcomeChampagne] = useState(false);
+  const [addWelcomeCocktail, setAddWelcomeCocktail] = useState(true);
+  const [addVIPBottle, setAddVIPBottle] = useState(false);
   const [clientName, setClientName] = useState('');
   const [clientEmail, setClientEmail] = useState('');
   const [clientPhone, setClientPhone] = useState('');
-  const [dietaryNotes, setDietaryNotes] = useState('');
-  const [specialOccasion, setSpecialOccasion] = useState('none');
+  const [musicNotes, setMusicNotes] = useState('');
   const [bookingCode, setBookingCode] = useState('');
 
   if (!isOpen) return null;
@@ -31,23 +30,22 @@ export default function ReservationModal({
     if (step < 3) {
       setStep(step + 1);
     } else {
-      // Generate booking reference
       const randomCode = 'OCT-' + Math.floor(1000 + Math.random() * 9000);
       setBookingCode(randomCode);
-      setStep(4); // Confirmed screen
+      setStep(4);
     }
   };
 
   const handleDownloadCalendar = () => {
     const event = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//La Octava//Haute Gastronomie//ES
+PRODID:-//La Octava Jazz & House Club//Madrid//ES
 BEGIN:VEVENT
 UID:${bookingCode}@laoctava.com
 DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
 DTSTART:${date.replace(/-/g, '')}T${time.replace(':', '')}00
-SUMMARY:Reserva en La Octava - ${bookingCode}
-DESCRIPTION:Reserva confirmada en La Octava para ${guests} comensales. Paseo de la Castellana 88, Madrid.
+SUMMARY:La Octava (${level === 'piano' ? 'Piano & Jazz Bar' : 'Sub-Vault House Club'}) - ${bookingCode}
+DESCRIPTION:Reserva confirmada en La Octava para ${guests} personas. Paseo de la Castellana 88, Madrid.
 LOCATION:Paseo de la Castellana 88, Madrid
 END:VEVENT
 END:VCALENDAR`;
@@ -55,7 +53,7 @@ END:VCALENDAR`;
     const blob = new Blob([event], { type: 'text/calendar;charset=utf-8' });
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', `Reserva-LaOctava-${bookingCode}.ics`);
+    link.setAttribute('download', `LaOctava-Pase-${bookingCode}.ics`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -76,7 +74,7 @@ END:VCALENDAR`;
             <div>
               <span className="modal-brand-title">LA OCTAVA</span>
               <span className="modal-brand-subtitle">
-                {lang === 'es' ? 'Protocolo de Reserva Exclusiva' : 'Exclusive Reservation Protocol'}
+                {lang === 'es' ? 'Reserva de Mesa & Pases VIP' : 'Table Bookings & VIP Access'}
               </span>
             </div>
           </div>
@@ -90,12 +88,12 @@ END:VCALENDAR`;
           <div className="modal-steps-bar">
             <div className={`step-node ${step >= 1 ? 'active' : ''}`}>
               <span className="node-num">1</span>
-              <span className="node-text">{lang === 'es' ? 'Espacio & Fecha' : 'Space & Date'}</span>
+              <span className="node-text">{lang === 'es' ? 'Nivel & Fecha' : 'Level & Date'}</span>
             </div>
             <div className="node-line"></div>
             <div className={`step-node ${step >= 2 ? 'active' : ''}`}>
               <span className="node-num">2</span>
-              <span className="node-text">{lang === 'es' ? 'Experiencia & Maridaje' : 'Experience'}</span>
+              <span className="node-text">{lang === 'es' ? 'Mesa & Cócteles' : 'Table & Drinks'}</span>
             </div>
             <div className="node-line"></div>
             <div className={`step-node ${step >= 3 ? 'active' : ''}`}>
@@ -105,25 +103,29 @@ END:VCALENDAR`;
           </div>
         )}
 
-        {/* STEP 1: Space & Date Selection */}
+        {/* STEP 1: Level & Date */}
         {step === 1 && (
           <form onSubmit={handleNextStep} className="modal-form-step">
             <div className="modal-input-group">
               <label className="input-label">
-                <Compass size={15} className="text-gold" />
-                <span>{lang === 'es' ? 'Seleccionar Espacio' : 'Select Atmosphere'}</span>
+                <Music size={15} className="text-gold" />
+                <span>{lang === 'es' ? '1. Selecciona el Nivel & Experiencia' : '1. Select Level & Experience'}</span>
               </label>
+
               <div className="space-options-grid">
                 {[
-                  { id: 'salon-principal', title: 'Salón Abovedado', sub: 'Alta cocina íntima y elegante' },
-                  { id: 'cava-subterranea', title: 'Cava Subterránea', sub: 'Mesa privada entre 850+ grand crus' },
-                  { id: 'rooftop-skyline', title: 'Rooftop & Fuego Vivo', sub: 'Vistas 360° y coctelería de autor' },
-                  { id: 'atelier-culinario', title: "Mesa del Chef L'Atelier", sub: '8 plazas frente al pase gastronómico' }
+                  { id: 'piano-table', levelVal: 'piano', title: '🎹 Piano Bar: Frente al Steinway', sub: 'Jazz acústico en directo & cócteles de autor (19:00 – 02:00)' },
+                  { id: 'velvet-booth', levelVal: 'piano', title: '🍷 Piano Bar: Sofá de Terciopelo', sub: 'Reservado íntimo para cenas y copas de noche' },
+                  { id: 'club-subvault', levelVal: 'club', title: '🎛️ Sub-Vault: Entrada House Club', sub: 'Acceso directo a la pista y bóveda subterránea (23:30 – 06:00)' },
+                  { id: 'vip-dj-booth', levelVal: 'club', title: '✨ Sub-Vault: Mesa VIP Cabina DJ', sub: 'Servicio de botella exclusivo junto a la cabina' }
                 ].map((opt) => (
                   <div 
                     key={opt.id}
                     className={`space-select-tile ${space === opt.id ? 'active' : ''}`}
-                    onClick={() => setSpace(opt.id)}
+                    onClick={() => {
+                      setSpace(opt.id);
+                      setLevel(opt.levelVal);
+                    }}
                   >
                     <div className="tile-title font-serif">{opt.title}</div>
                     <div className="tile-sub font-editorial">{opt.sub}</div>
@@ -151,20 +153,19 @@ END:VCALENDAR`;
               <div className="modal-input-group">
                 <label className="input-label">
                   <Users size={15} className="text-gold" />
-                  <span>{lang === 'es' ? 'Número de Comensales' : 'Guests'}</span>
+                  <span>{lang === 'es' ? 'Comensales / Invitados' : 'Guests'}</span>
                 </label>
                 <select 
                   className="modal-select"
                   value={guests}
                   onChange={(e) => setGuests(e.target.value)}
                 >
-                  <option value="1">1 {lang === 'es' ? 'Comensal' : 'Guest'}</option>
-                  <option value="2">2 {lang === 'es' ? 'Comensales (Mesa Velada)' : 'Guests'}</option>
-                  <option value="3">3 {lang === 'es' ? 'Comensales' : 'Guests'}</option>
-                  <option value="4">4 {lang === 'es' ? 'Comensales' : 'Guests'}</option>
-                  <option value="6">6 {lang === 'es' ? 'Comensales (Mesa Imperial)' : 'Guests'}</option>
-                  <option value="8">8 {lang === 'es' ? 'Comensales (Reserva Bóveda)' : 'Guests'}</option>
-                  <option value="12">12+ {lang === 'es' ? 'Evento Privado Completo' : 'Private Event'}</option>
+                  <option value="1">1 {lang === 'es' ? 'Persona' : 'Guest'}</option>
+                  <option value="2">2 {lang === 'es' ? 'Personas (Mesa Íntima)' : 'Guests (Intimate Table)'}</option>
+                  <option value="3">3 {lang === 'es' ? 'Personas' : 'Guests'}</option>
+                  <option value="4">4 {lang === 'es' ? 'Personas (Sofá Lounge)' : 'Guests (Lounge Couch)'}</option>
+                  <option value="6">6 {lang === 'es' ? 'Personas (Mesa Grupo)' : 'Guests'}</option>
+                  <option value="8">8+ {lang === 'es' ? 'Reservado VIP / Evento' : 'VIP Booth / Event'}</option>
                 </select>
               </div>
             </div>
@@ -175,12 +176,15 @@ END:VCALENDAR`;
                 <span>{lang === 'es' ? 'Turno Horario' : 'Time Slot'}</span>
               </label>
               <div className="time-chips-row">
-                {['13:30', '14:30', '20:30', '21:15', '22:00', '22:45'].map((t) => (
+                {(level === 'piano' 
+                  ? ['20:00 (Apertura)', '21:00 (Set 1)', '22:30 (Set 2)', '23:45 (Midnight)'] 
+                  : ['23:30 (Apertura)', '00:30 (Peak 1)', '01:45 (Peak 2)', '03:00 (Late Night)']
+                ).map((t) => (
                   <button
                     key={t}
                     type="button"
-                    className={`time-chip ${time === t ? 'active' : ''}`}
-                    onClick={() => setTime(t)}
+                    className={`time-chip ${time === t.split(' ')[0] ? 'active' : ''}`}
+                    onClick={() => setTime(t.split(' ')[0])}
                   >
                     {t}
                   </button>
@@ -191,84 +195,50 @@ END:VCALENDAR`;
             <div className="modal-footer-nav">
               <div></div>
               <button type="submit" className="btn-primary">
-                <span>{lang === 'es' ? 'Continuar a Experiencia' : 'Next: Experience'}</span>
+                <span>{lang === 'es' ? 'Continuar a Mejoras' : 'Next: Enhancements'}</span>
                 <ArrowRight size={16} />
               </button>
             </div>
           </form>
         )}
 
-        {/* STEP 2: Gastronomic Experience & Pairings */}
+        {/* STEP 2: Enhancements */}
         {step === 2 && (
           <form onSubmit={handleNextStep} className="modal-form-step">
             <div className="modal-input-group">
               <label className="input-label">
                 <Sparkles size={15} className="text-gold" />
-                <span>{lang === 'es' ? 'Formato Culinario Principal' : 'Primary Culinary Format'}</span>
-              </label>
-              <div className="experience-choice-grid">
-                <div 
-                  className={`exp-card ${experience === 'tasting-menu' ? 'active' : ''}`}
-                  onClick={() => setExperience('tasting-menu')}
-                >
-                  <div className="exp-card-header">
-                    <span className="exp-name font-serif">{lang === 'es' ? 'Menú Sinfonía 8 Pasos' : '8-Step Symphony Menu'}</span>
-                    <span className="exp-price font-serif text-gold">185 €</span>
-                  </div>
-                  <p className="exp-desc font-editorial">
-                    {lang === 'es' ? 'La experiencia insignia completa del Chef Ejecutivo.' : 'The Executive Chef signature gastronomic opus.'}
-                  </p>
-                </div>
-
-                <div 
-                  className={`exp-card ${experience === 'alacarte' ? 'active' : ''}`}
-                  onClick={() => setExperience('alacarte')}
-                >
-                  <div className="exp-card-header">
-                    <span className="exp-name font-serif">{lang === 'es' ? 'Carta Libre de Temporada' : 'A La Carte Selection'}</span>
-                    <span className="exp-price font-serif text-gold">~110 €</span>
-                  </div>
-                  <p className="exp-desc font-editorial">
-                    {lang === 'es' ? 'Selección individual de cortes nobles, mariscos y entrantes.' : 'Individual choice from wild catch and prime dry aged cuts.'}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="modal-input-group">
-              <label className="input-label">
-                <Wine size={15} className="text-gold" />
-                <span>{lang === 'es' ? 'Experiencias Líquidas & Mejoras' : 'Liquid Enhancements'}</span>
+                <span>{lang === 'es' ? 'Experiencias Líquidas & Mesa' : 'Drink Enhancements'}</span>
               </label>
 
               <div className="enhancements-list">
                 <label className="checkbox-tile">
                   <input 
                     type="checkbox" 
-                    checked={addWinePairing} 
-                    onChange={(e) => setAddWinePairing(e.target.checked)} 
+                    checked={addWelcomeCocktail} 
+                    onChange={(e) => setAddWelcomeCocktail(e.target.checked)} 
                   />
                   <div className="tile-info">
                     <div className="tile-title-price">
-                      <strong>{lang === 'es' ? 'Maridaje Armonía Grand Cru' : 'Grand Cru Wine Flight'}</strong>
-                      <span className="text-gold font-serif">+110 € / pers.</span>
+                      <strong>{lang === 'es' ? "Cóctel de Bienvenida 'The Steinway 88'" : "Welcome Signature 'Steinway 88' Cocktail"}</strong>
+                      <span className="text-gold font-serif">+20 € / pers.</span>
                     </div>
-                    <p className="font-editorial">{lang === 'es' ? '8 copas seleccionadas por el Head Sommelier' : '8 glasses curated by Head Sommelier'}</p>
+                    <p className="font-editorial">{lang === 'es' ? 'Servido a la llegada con hielo tallado y humo de roble' : 'Served upon arrival with diamond ice & oak smoke'}</p>
                   </div>
                 </label>
 
                 <label className="checkbox-tile">
                   <input 
                     type="checkbox" 
-                    checked={addWelcomeChampagne} 
-                    onChange={(e) => setAddWelcomeChampagne(e.target.checked)} 
+                    checked={addVIPBottle} 
+                    onChange={(e) => setAddVIPBottle(e.target.checked)} 
                   />
                   <div className="tile-info">
                     <div className="tile-title-price">
-                      <strong>{lang === 'es' ? 'Copa de Bienvenida Dom Pérignon Vintage' : 'Dom Pérignon Welcome Toast'}</strong>
-                      <span className="text-gold font-serif">+35 € / pers.</span>
+                      <strong>{lang === 'es' ? 'Botella Champagne Dom Pérignon en Mesa' : 'Dom Pérignon Vintage Bottle on Ice'}</strong>
+                      <span className="text-gold font-serif">+360 €</span>
                     </div>
-                    <p className="font-editorial">{lang === 'es' ? 'Servida a la llegada con perlas de caviar' : 'Served on arrival with Oscietra caviar spoon'}</p>
+                    <p className="font-editorial">{lang === 'es' ? 'Cubitera de plata y servicio de sommelier dedicado' : 'Silver champagne bucket & dedicated service'}</p>
                   </div>
                 </label>
               </div>
@@ -280,24 +250,24 @@ END:VCALENDAR`;
                 <span>{lang === 'es' ? 'Atrás' : 'Back'}</span>
               </button>
               <button type="submit" className="btn-primary">
-                <span>{lang === 'es' ? 'Continuar a Datos' : 'Next: Guest Details'}</span>
+                <span>{lang === 'es' ? 'Continuar a Datos' : 'Next: Guest Info'}</span>
                 <ArrowRight size={16} />
               </button>
             </div>
           </form>
         )}
 
-        {/* STEP 3: Guest Details & Special Requests */}
+        {/* STEP 3: Guest Info */}
         {step === 3 && (
           <form onSubmit={handleNextStep} className="modal-form-step">
             <div className="modal-input-group">
               <label className="input-label">
-                <span>{lang === 'es' ? 'Nombre y Apellidos del Titular *' : 'Lead Guest Full Name *'}</span>
+                <span>{lang === 'es' ? 'Nombre Completo del Titular *' : 'Lead Guest Full Name *'}</span>
               </label>
               <input 
                 type="text"
                 className="modal-text-input"
-                placeholder={lang === 'es' ? 'Ej: Conde de Valverde / Sra. Carmen Morales' : 'e.g. Victor Ayllon'}
+                placeholder={lang === 'es' ? 'Ej: Victor Ayllon' : 'e.g. Victor Ayllon'}
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
                 required
@@ -307,7 +277,7 @@ END:VCALENDAR`;
             <div className="form-row-2">
               <div className="modal-input-group">
                 <label className="input-label">
-                  <span>{lang === 'es' ? 'Teléfono de Contacto (SMS confirmación) *' : 'Phone Number (SMS confirmation) *'}</span>
+                  <span>{lang === 'es' ? 'Teléfono (Pase SMS) *' : 'Mobile Phone (SMS Pass) *'}</span>
                 </label>
                 <input 
                   type="tel"
@@ -326,7 +296,7 @@ END:VCALENDAR`;
                 <input 
                   type="email"
                   className="modal-text-input"
-                  placeholder="vip@ejemplo.com"
+                  placeholder="victor@example.com"
                   value={clientEmail}
                   onChange={(e) => setClientEmail(e.target.value)}
                   required
@@ -336,31 +306,14 @@ END:VCALENDAR`;
 
             <div className="modal-input-group">
               <label className="input-label">
-                <span>{lang === 'es' ? 'Motivo Especial / Celebración' : 'Special Occasion'}</span>
-              </label>
-              <select 
-                className="modal-select"
-                value={specialOccasion}
-                onChange={(e) => setSpecialOccasion(e.target.value)}
-              >
-                <option value="none">{lang === 'es' ? 'Cena Gastronómica Habitual' : 'Standard Gastronomic Dinner'}</option>
-                <option value="anniversary">{lang === 'es' ? 'Aniversario Romántico' : 'Romantic Anniversary'}</option>
-                <option value="birthday">{lang === 'es' ? 'Celebración de Cumpleaños' : 'Birthday Celebration'}</option>
-                <option value="business">{lang === 'es' ? 'Cena de Alta Dirección / Negocios' : 'Executive / Business Dinner'}</option>
-                <option value="proposal">{lang === 'es' ? 'Petición de Mano / Velada Secreta' : 'Secret Marriage Proposal'}</option>
-              </select>
-            </div>
-
-            <div className="modal-input-group">
-              <label className="input-label">
-                <span>{lang === 'es' ? 'Alergias o Preferencias Dietéticas' : 'Dietary Restrictions & Allergies'}</span>
+                <span>{lang === 'es' ? 'Peticiones Especiales / Notas Musicales' : 'Special Notes or Artist Dedications'}</span>
               </label>
               <input 
                 type="text"
                 className="modal-text-input"
-                placeholder={lang === 'es' ? 'Ej: Sin mariscos, intolerancia al gluten, sin frutos secos...' : 'e.g. No shellfish, gluten intolerant, pescatarian...'}
-                value={dietaryNotes}
-                onChange={(e) => setDietaryNotes(e.target.value)}
+                placeholder={lang === 'es' ? 'Ej: Celebración de cumpleaños, mesa cerca del saxofonista...' : 'e.g. Birthday celebration, prefer near saxophonist...'}
+                value={musicNotes}
+                onChange={(e) => setMusicNotes(e.target.value)}
               />
             </div>
 
@@ -371,7 +324,7 @@ END:VCALENDAR`;
               </button>
               <button type="submit" className="btn-primary">
                 <CheckCircle2 size={16} />
-                <span>{lang === 'es' ? 'Confirmar Reserva Oficial' : 'Confirm Official Booking'}</span>
+                <span>{lang === 'es' ? 'Emitir Pase Oficial' : 'Confirm & Issue Pass'}</span>
               </button>
             </div>
           </form>
@@ -385,42 +338,36 @@ END:VCALENDAR`;
             </div>
 
             <h3 className="confirmation-title font-serif">
-              {lang === 'es' ? 'Reserva Garantizada en La Octava' : 'Reservation Confirmed at La Octava'}
+              {lang === 'es' ? 'Pase Confirmado en La Octava' : 'Access Pass Confirmed at La Octava'}
             </h3>
 
             <div className="booking-code-pill font-serif">
-              {lang === 'es' ? 'Código de Pase:' : 'Access Code:'} <span className="text-gold">{bookingCode}</span>
+              {lang === 'es' ? 'Código de Acceso:' : 'Pass Code:'} <span className="text-gold">{bookingCode}</span>
             </div>
 
             <div className="confirmation-summary-box glass-card font-editorial">
               <div className="summary-row">
                 <span>{lang === 'es' ? 'Titular:' : 'Guest:'}</span>
-                <strong>{clientName || 'Huésped Ilustre'}</strong>
+                <strong>{clientName || 'Huésped VIP'}</strong>
               </div>
               <div className="summary-row">
-                <span>{lang === 'es' ? 'Fecha y Hora:' : 'Date & Time:'}</span>
+                <span>{lang === 'es' ? 'Nivel:' : 'Level:'}</span>
+                <strong className="text-gold">{level === 'piano' ? '🎹 Piano & Jazz Bar (Piso 01)' : '🎛️ Sub-Vault House Club (Nivel -01)'}</strong>
+              </div>
+              <div className="summary-row">
+                <span>{lang === 'es' ? 'Fecha & Turno:' : 'Date & Time:'}</span>
                 <strong>{date} a las {time} h</strong>
               </div>
               <div className="summary-row">
-                <span>{lang === 'es' ? 'Espacio:' : 'Space:'}</span>
-                <strong>{space.replace('-', ' ').toUpperCase()}</strong>
-              </div>
-              <div className="summary-row">
-                <span>{lang === 'es' ? 'Comensales:' : 'Guests:'}</span>
+                <span>{lang === 'es' ? 'Invitados:' : 'Guests:'}</span>
                 <strong>{guests} {lang === 'es' ? 'personas' : 'guests'}</strong>
               </div>
-              {addWinePairing && (
-                <div className="summary-row">
-                  <span>{lang === 'es' ? 'Maridaje:' : 'Wine Pairing:'}</span>
-                  <strong className="text-gold">{lang === 'es' ? 'Grand Cru Armonía incluido' : 'Grand Cru Flight included'}</strong>
-                </div>
-              )}
             </div>
 
             <p className="confirmation-notice">
               {lang === 'es'
-                ? `Hemos enviado los detalles de acceso y protocolo a ${clientEmail || 'tu correo'}. Nuestro Head Sommelier preparará tu recepción.`
-                : `We have sent full access credentials and protocol to ${clientEmail || 'your email'}. Our Head Sommelier will prepare your arrival.`}
+                ? `Pase registrado en lista preferente de puerta. Te esperamos en Paseo de la Castellana 88.`
+                : `Pass registered on priority door list. See you at Paseo de la Castellana 88.`}
             </p>
 
             <div className="confirmation-actions-row">
@@ -430,17 +377,17 @@ END:VCALENDAR`;
                 onClick={handleDownloadCalendar}
               >
                 <Download size={16} />
-                <span>{lang === 'es' ? 'Guardar en Calendario (.ics)' : 'Add to Calendar (.ics)'}</span>
+                <span>{lang === 'es' ? 'Guardar Pase en Calendario (.ics)' : 'Add Pass to Calendar (.ics)'}</span>
               </button>
 
               <a
-                href={`https://wa.me/34688888888?text=Hola,%20tengo%20la%20reserva%20${bookingCode}%20para%20el%20${date}`}
+                href={`https://wa.me/34688888888?text=Hola,%20tengo%20el%20pase%20${bookingCode}%20para%20${level === 'piano' ? 'el%20Piano%20Bar' : 'el%20House%20Club'}`}
                 target="_blank"
                 rel="noreferrer"
                 className="btn-secondary"
               >
                 <MessageSquare size={16} />
-                <span>WhatsApp Concierge</span>
+                <span>WhatsApp Guestlist</span>
               </a>
             </div>
 
