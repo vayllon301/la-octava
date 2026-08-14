@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Sparkles, Check, Crown, KeyRound, ArrowRight } from 'lucide-react';
+import { Shield, Sparkles, Check, KeyRound, ArrowRight } from 'lucide-react';
 import { RESTAURANT_DATA } from '../data/restaurantData';
 
 export default function MembershipSection({ lang, onOpenMembership }) {
@@ -8,16 +8,16 @@ export default function MembershipSection({ lang, onOpenMembership }) {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">
-            {lang === 'es' ? 'Privilegios para Coleccionistas' : 'Collector Privileges'}
+          <span className="section-subtitle font-mono">
+            {lang === 'es' ? 'Black Key Society' : 'Black Key Society'}
           </span>
-          <h2 className="section-title">
-            {lang === 'es' ? 'El Círculo Octava Privado' : 'The Private Eighth Circle'}
+          <h2 className="section-title font-display">
+            {lang === 'es' ? 'Membresías & Acceso VIP' : 'Memberships & VIP Access'}
           </h2>
           <p className="section-desc">
             {lang === 'es'
-              ? 'Un club de miembros rigurosamente restringido a 88 iniciados anuales. Acceso prioritario, casilleros de cava privada y experiencias inaccesibles al público general.'
-              : 'A private members society strictly limited to 88 patrons annually. Priority access, private cellar lockers, and bespoke privileges.'}
+              ? 'Acceso preferente sin fricción para transitar libremente entre el piano bar y el house club subterráneo.'
+              : 'Seamless priority access to transition effortlessly between the acoustic piano bar and the underground club.'}
           </p>
         </div>
 
@@ -29,24 +29,20 @@ export default function MembershipSection({ lang, onOpenMembership }) {
               className={`membership-tier-card glass-card ${tier.recommended ? 'is-recommended' : ''}`}
             >
               {tier.recommended && (
-                <div className="recommended-badge">
-                  <Crown size={14} />
-                  <span>{lang === 'es' ? 'MÁS SOLICITADA' : 'MOST REQUESTED'}</span>
+                <div className="recommended-badge font-mono">
+                  <Sparkles size={13} />
+                  <span>{lang === 'es' ? 'RECOMENDADA' : 'FEATURED'}</span>
                 </div>
               )}
 
               <div className="tier-header">
                 <div className="tier-icon-wrap">
-                  {tier.recommended ? (
-                    <Crown size={28} className="text-gold" />
-                  ) : (
-                    <KeyRound size={28} className="text-gold" />
-                  )}
+                  <KeyRound size={22} className="text-gold" />
                 </div>
-                <h3 className="tier-name font-serif">
+                <h3 className="tier-name font-display">
                   {lang === 'es' ? tier.nameEs : tier.nameEn}
                 </h3>
-                <div className="tier-price-box font-serif text-gold">
+                <div className="tier-price-box font-mono text-gold">
                   {tier.priceYear}
                 </div>
               </div>
@@ -56,20 +52,19 @@ export default function MembershipSection({ lang, onOpenMembership }) {
               <ul className="tier-benefits-list">
                 {(lang === 'es' ? tier.benefitsEs : tier.benefitsEn).map((benefit, bIdx) => (
                   <li key={bIdx} className="benefit-item">
-                    <Check size={16} className="benefit-check text-gold" />
+                    <Check size={15} className="benefit-check text-gold" />
                     <span>{benefit}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="tier-action-wrap">
+              <div className="tier-action-wrap font-mono">
                 <button
                   type="button"
                   className={tier.recommended ? 'btn-primary tier-cta-btn' : 'btn-secondary tier-cta-btn'}
                   onClick={() => onOpenMembership(tier.id)}
                 >
-                  <Sparkles size={16} />
-                  <span>{lang === 'es' ? 'Solicitar Admisión' : 'Apply for Admission'}</span>
+                  <span>{lang === 'es' ? 'Solicitar Membresía' : 'Apply for Access'}</span>
                   <ArrowRight size={14} />
                 </button>
               </div>
@@ -79,11 +74,11 @@ export default function MembershipSection({ lang, onOpenMembership }) {
 
         {/* Membership Footer Note */}
         <div className="membership-disclaimer glass-card">
-          <Shield size={20} className="text-gold" />
-          <p className="font-editorial">
+          <Shield size={18} className="text-gold" />
+          <p className="font-mono">
             {lang === 'es'
-              ? 'Nota de Admisión: Las solicitudes son evaluadas semanalmente por nuestro Comité de Dirección. Los nuevos miembros reciben su llave física de acceso y bienvenida privada por el Head Sommelier.'
-              : 'Admission Note: Applications are reviewed weekly by our Executive Committee. Accepted members receive a bespoke physical access key and private welcome by our Head Sommelier.'}
+              ? 'Black Key Protocol: Las solicitudes se evalúan de forma confidencial. Los miembros aceptados reciben su llave física personalizada.'
+              : 'Black Key Protocol: Applications are reviewed confidentially. Accepted members receive a personalized physical key.'}
           </p>
         </div>
       </div>

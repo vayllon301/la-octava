@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { RESTAURANT_DATA } from '../data/restaurantData';
 
 export default function ReviewsAndPress({ lang }) {
@@ -15,31 +15,31 @@ export default function ReviewsAndPress({ lang }) {
 
   const guestReviews = [
     {
-      author: "Dra. Elena de Borbón-Rivas",
-      role: "Crítica Gastronómica Independiente",
-      roleEn: "Independent Gastronomy Critic",
+      author: "Alexandre R.",
+      role: "Architect & Vinyl Collector",
+      roleEn: "Architect & Vinyl Collector",
       rating: 5,
-      date: "Octubre 2026",
-      textEs: "«La armonía entre el rodaballo con hollandaise de erizo y el Meursault 2020 fue uno de los momentos culinarios más sublimes del año. El servicio sommelier es impecable.»",
-      textEn: "«The pairing between the wild turbot with sea urchin hollandaise and Meursault 2020 was one of the most sublime culinary moments of the year. Flawless sommelier execution.»"
+      date: "Madrid • 2026",
+      textEs: "«El tratamiento acústico con lamas de roble y el Steinway D-274 crean un sonido increíblemente cálido. Es el listening bar definitivo en la ciudad.»",
+      textEn: "«The acoustic wood slats and Steinway D-274 create an astonishingly warm sound. The definitive listening bar in the city.»"
     },
     {
-      author: "Philippe de Montmirail",
-      role: "Coleccionista de Vino & Miembro Gran Cava",
-      roleEn: "Wine Collector & Grand Cellar Member",
+      author: "Marc V.",
+      role: "Music Producer & DJ",
+      roleEn: "Music Producer & DJ",
       rating: 5,
-      date: "Noviembre 2026",
-      textEs: "«Tener mi propio casillero en la bóveda subterránea y poder disfrutar de catas a ciegas en la mesa del chef con mis clientes no tiene comparación en Europa.»",
-      textEn: "«Having my personal locker in the subterranean vault and enjoying guided blind tastings at the chef's table with clients has no peer in Europe.»"
+      date: "Berlin / Madrid",
+      textEs: "«El Sub-Level tiene ese espíritu brutalista y la precisión de Funktion-One que solo encuentras en los mejores clubs de Berlín o Londres.»",
+      textEn: "«The Sub-Level delivers brutalist aesthetics and Funktion-One precision on par with top-tier clubs in Berlin or London.»"
     },
     {
-      author: "Valeria Santoro",
-      role: "Arquitecta & Huésped de Rooftop",
-      roleEn: "Architect & Rooftop Patron",
+      author: "Carla D.",
+      role: "Creative Director",
+      roleEn: "Creative Director",
       rating: 5,
-      date: "Diciembre 2026",
-      textEs: "«El cóctel Octava Sinfonía con humo de romero junto a la chimenea bajo las estrellas de Madrid es un ritual obligatorio. El diseño de iluminación es pura magia.»",
-      textEn: "«The Octava Sinfonía cocktail with rosemary smoke beside the fire pit under Madrid starlight is an absolute ritual. The lighting design is pure magic.»"
+      date: "Madrid",
+      textEs: "«Empezar la noche con un highball clarificado escuchando jazz en directo y bajar a bailar house sin salir del edificio es insuperable.»",
+      textEn: "«Starting the night with a clarified highball at the jazz lounge and moving downstairs for deep house without leaving the building is unmatched.»"
     }
   ];
 
@@ -48,28 +48,23 @@ export default function ReviewsAndPress({ lang }) {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">
-            {lang === 'es' ? 'Reconocimientos & Crítica Internacional' : 'Accolades & Global Press'}
+          <span className="section-subtitle font-mono">
+            {lang === 'es' ? 'Prensa & Crítica' : 'Press & Sound Recognition'}
           </span>
-          <h2 className="section-title">
-            {lang === 'es' ? 'La Opinión de los Expertos' : 'The Connoisseur Verdict'}
+          <h2 className="section-title font-display">
+            {lang === 'es' ? 'Reconocimiento Internacional' : 'Sound & Culture Reviews'}
           </h2>
         </div>
 
         {/* Featured Press Carousel */}
         <div className="featured-press-card glass-card">
-          <div className="press-quote-icon">
-            <Quote size={40} className="text-gold" />
-          </div>
-
-          <p className="press-quote-text font-editorial">
+          <p className="press-quote-text font-display">
             {lang === 'es'
               ? RESTAURANT_DATA.pressQuotes[activeQuoteIdx].quoteEs
               : RESTAURANT_DATA.pressQuotes[activeQuoteIdx].quoteEn}
           </p>
 
-          <div className="press-quote-source font-serif">
-            <Award size={18} className="text-gold" />
+          <div className="press-quote-source font-mono text-gold">
             <span>{RESTAURANT_DATA.pressQuotes[activeQuoteIdx].source}</span>
           </div>
 
@@ -78,9 +73,9 @@ export default function ReviewsAndPress({ lang }) {
               type="button" 
               className="carousel-arrow-btn"
               onClick={prevQuote}
-              aria-label="Previous quote"
+              aria-label="Previous"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={18} />
             </button>
             <div className="carousel-dots">
               {RESTAURANT_DATA.pressQuotes.map((_, idx) => (
@@ -89,7 +84,7 @@ export default function ReviewsAndPress({ lang }) {
                   type="button"
                   className={`dot-pill ${activeQuoteIdx === idx ? 'active' : ''}`}
                   onClick={() => setActiveQuoteIdx(idx)}
-                  aria-label={`Go to quote ${idx + 1}`}
+                  aria-label={`Go to ${idx + 1}`}
                 />
               ))}
             </div>
@@ -97,9 +92,9 @@ export default function ReviewsAndPress({ lang }) {
               type="button" 
               className="carousel-arrow-btn"
               onClick={nextQuote}
-              aria-label="Next quote"
+              aria-label="Next"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={18} />
             </button>
           </div>
         </div>
@@ -110,16 +105,16 @@ export default function ReviewsAndPress({ lang }) {
             <div key={rIdx} className="guest-review-card glass-card">
               <div className="review-stars-row">
                 {[...Array(rev.rating)].map((_, i) => (
-                  <Star key={i} size={15} className="star-filled text-gold" fill="currentColor" />
+                  <Star key={i} size={13} className="star-filled text-gold" fill="currentColor" />
                 ))}
-                <span className="review-date">{rev.date}</span>
+                <span className="review-date font-mono">{rev.date}</span>
               </div>
-              <p className="review-text font-editorial">
+              <p className="review-text">
                 {lang === 'es' ? rev.textEs : rev.textEn}
               </p>
               <div className="review-author-box">
-                <span className="author-name font-serif">{rev.author}</span>
-                <span className="author-role">{lang === 'es' ? rev.role : rev.roleEn}</span>
+                <span className="author-name font-display">{rev.author}</span>
+                <span className="author-role font-mono">{lang === 'es' ? rev.role : rev.roleEn}</span>
               </div>
             </div>
           ))}

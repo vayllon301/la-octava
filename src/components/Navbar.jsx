@@ -17,7 +17,7 @@ export default function Navbar({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -42,28 +42,26 @@ export default function Navbar({
   };
 
   const navLinks = [
-    { href: "#niveles", labelEs: "Los 2 Niveles", labelEn: "The 2 Levels" },
-    { href: "#cartel", labelEs: "Cartel Semanal", labelEn: "Weekly Lineup" },
-    { href: "#cocteles", labelEs: "Cócteles & Carta", labelEn: "Cocktails & Bites" },
-    { href: "#espacios", labelEs: "Piano & Sótano", labelEn: "Spaces" },
-    { href: "#membresia", labelEs: "Llave Negra VIP", labelEn: "Black Key VIP" },
-    { href: "#prensa", labelEs: "Críticas", labelEn: "Press & Sound" },
-    { href: "#contacto", labelEs: "Acceso & Horarios", labelEn: "Access & Hours" }
+    { href: "#niveles", labelEs: "Niveles", labelEn: "Levels" },
+    { href: "#cartel", labelEs: "Lineup", labelEn: "Lineup" },
+    { href: "#cocteles", labelEs: "Drinks & Bites", labelEn: "Drinks & Bites" },
+    { href: "#espacios", labelEs: "Espacios", labelEn: "Spaces" },
+    { href: "#membresia", labelEs: "Black Key", labelEn: "Black Key" },
+    { href: "#prensa", labelEs: "Press", labelEn: "Press" },
+    { href: "#contacto", labelEs: "Info & Puertas", labelEn: "Access" }
   ];
 
   return (
     <header className={`navbar-header ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container nav-container">
-        {/* Brand Logo with the icon */}
+        {/* Brand Logo with modern minimalist lockup */}
         <a href="#" className="brand-logo-wrap" id="nav-brand-logo">
           <div className="brand-icon-frame">
-            <img src="/icon.jpeg" alt="La Octava Icon" className="brand-icon-img" />
+            <img src="/icon.jpeg" alt="La Octava" className="brand-icon-img" />
           </div>
           <div className="brand-text">
             <span className="brand-title">LA OCTAVA</span>
-            <span className="brand-subtitle">
-              {lang === 'es' ? 'Jazz Bar • House Club' : 'Jazz Bar • House Club'}
-            </span>
+            <span className="brand-subtitle font-mono">MADRID • 01 / -01</span>
           </div>
         </a>
 
@@ -73,7 +71,7 @@ export default function Navbar({
             <a 
               key={item.href} 
               href={item.href} 
-              className="nav-link"
+              className="nav-link font-mono"
             >
               {lang === 'es' ? item.labelEs : item.labelEn}
             </a>
@@ -82,7 +80,7 @@ export default function Navbar({
 
         {/* Actions & Utilities */}
         <div className="nav-actions">
-          {/* Dual Audio Selector (Jazz / House) */}
+          {/* Dual Audio Selector */}
           <div className="audio-mode-selector">
             <button 
               type="button"
@@ -91,9 +89,9 @@ export default function Navbar({
                 if (isPlayingAudio && audioMode === 'jazz') toggleSound();
                 else switchAudioMode('jazz');
               }}
-              title="Escuchar Jazz Piano Lounge"
+              title="Acoustic Jazz Piano"
             >
-              <Music size={14} />
+              <Music size={13} />
               <span className="sound-label">Jazz</span>
             </button>
 
@@ -104,9 +102,9 @@ export default function Navbar({
                 if (isPlayingAudio && audioMode === 'house') toggleSound();
                 else switchAudioMode('house');
               }}
-              title="Escuchar Sub-Vault House Beats"
+              title="Sub-Level Deep House"
             >
-              <Disc size={14} />
+              <Disc size={13} />
               <span className="sound-label">House</span>
             </button>
 
@@ -122,33 +120,31 @@ export default function Navbar({
           {/* Currency Toggle */}
           <button 
             type="button" 
-            className="currency-btn"
+            className="currency-btn font-mono"
             onClick={() => setCurrency(currency === 'EUR' ? 'USD' : 'EUR')}
-            title="Cambiar divisa / Change currency"
           >
-            {currency === 'EUR' ? '€ EUR' : '$ USD'}
+            {currency === 'EUR' ? 'EUR' : 'USD'}
           </button>
 
           {/* Language Selector */}
           <button 
             type="button" 
-            className="lang-btn"
+            className="lang-btn font-mono"
             onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-            title="Cambiar idioma / Switch language"
           >
-            <Globe size={14} />
+            <Globe size={13} />
             <span>{lang.toUpperCase()}</span>
           </button>
 
-          {/* Quick Reserve CTA */}
+          {/* Reserve CTA */}
           <button 
             type="button"
             id="nav-reserve-btn"
             className="btn-primary nav-reserve-cta"
             onClick={() => onOpenReservation()}
           >
-            <Calendar size={14} />
-            <span>{lang === 'es' ? 'Reservar' : 'Reserve'}</span>
+            <Calendar size={13} />
+            <span>{lang === 'es' ? 'Reservar' : 'Book'}</span>
           </button>
 
           {/* Mobile Menu Toggle Button */}
@@ -158,7 +154,7 @@ export default function Navbar({
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -171,7 +167,7 @@ export default function Navbar({
               <img src="/icon.jpeg" alt="Logo" className="mobile-drawer-icon" />
               <div>
                 <div className="brand-title">LA OCTAVA</div>
-                <div className="brand-subtitle">Jazz & Piano Bar • Sub-Vault House Club</div>
+                <div className="brand-subtitle font-mono">Level 01 Piano Bar • Level -01 House Club</div>
               </div>
             </div>
 
@@ -197,8 +193,8 @@ export default function Navbar({
                   onOpenReservation();
                 }}
               >
-                <Calendar size={16} />
-                {lang === 'es' ? 'Reservar Mesa o Pase VIP' : 'Book Table or VIP Pass'}
+                <Calendar size={15} />
+                {lang === 'es' ? 'Reservar Mesa o Guestlist' : 'Book Table or Guestlist'}
               </button>
 
               <button 
@@ -209,8 +205,8 @@ export default function Navbar({
                   onOpenMembership();
                 }}
               >
-                <Sparkles size={16} />
-                {lang === 'es' ? 'Membresía Llave Negra' : 'Black Key Membership'}
+                <Sparkles size={15} />
+                {lang === 'es' ? 'Black Key Membership' : 'Black Key Membership'}
               </button>
             </div>
           </div>

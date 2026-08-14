@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Clock, Shirt, MessageSquare, ArrowUpRight, Music, Disc } from 'lucide-react';
+import { MapPin, Phone, Clock, Shirt, MessageSquare, ArrowUpRight } from 'lucide-react';
 import { RESTAURANT_DATA } from '../data/restaurantData';
 
 export default function LocationAndContact({ lang, onOpenReservation }) {
@@ -8,77 +8,77 @@ export default function LocationAndContact({ lang, onOpenReservation }) {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">
-            {lang === 'es' ? 'Acceso & Mayordomía Nocturna' : 'Access & Night Concierge'}
+          <span className="section-subtitle font-mono">
+            {lang === 'es' ? 'Acceso & Ubicación' : 'Access & Location'}
           </span>
-          <h2 className="section-title">
-            {lang === 'es' ? 'Ubicación & Puerta de Entrada' : 'Location, Doors & Hours'}
+          <h2 className="section-title font-display">
+            {lang === 'es' ? 'Información & Puertas' : 'Doors & Access'}
           </h2>
           <p className="section-desc">
             {lang === 'es'
-              ? 'Situado en Paseo de la Castellana 88. Acceso directo al Piano Bar en planta calle y descenso al Sub-Vault por el pasaje subterráneo.'
-              : 'Located on Paseo de la Castellana 88. Direct ground floor access to the Piano Bar and subterranean passage to the Sub-Vault.'}
+              ? 'Paseo de la Castellana 88, Madrid. Acceso a Level 01 en planta principal y paso directo a Level -01 Sub-Level.'
+              : 'Paseo de la Castellana 88, Madrid. Direct street level entry to Level 01 and subterranean access to Level -01.'}
           </p>
         </div>
 
         <div className="location-grid">
           {/* Information Column */}
           <div className="location-info-card glass-card">
-            <h3 className="info-card-title font-serif">
-              {lang === 'es' ? 'Protocolo de Entrada & Horarios' : 'Door Policy & Schedule'}
+            <h3 className="info-card-title font-display">
+              {lang === 'es' ? 'Horarios & Código de Acceso' : 'Hours & Door Policy'}
             </h3>
 
             <div className="info-items-list">
               {/* Address */}
               <div className="info-row">
-                <div className="info-icon"><MapPin size={20} className="text-gold" /></div>
+                <div className="info-icon"><MapPin size={18} className="text-gold" /></div>
                 <div className="info-content">
-                  <span className="info-label">{lang === 'es' ? 'Dirección' : 'Address'}</span>
+                  <span className="info-label font-mono">{lang === 'es' ? 'Dirección' : 'Address'}</span>
                   <span className="info-val">{RESTAURANT_DATA.address}</span>
-                  <span className="info-hint">{lang === 'es' ? 'Entrada señalizada con el farol ámbar y el 8 en bronce' : 'Marked by the amber lantern and bronze 8 insignia'}</span>
+                  <span className="info-hint font-mono">{lang === 'es' ? 'Entrada señalizada: Faro 8 ámbar' : 'Access marked with amber 8 beacon'}</span>
                 </div>
               </div>
 
               {/* Hours */}
               <div className="info-row">
-                <div className="info-icon"><Clock size={20} className="text-gold" /></div>
+                <div className="info-icon"><Clock size={18} className="text-gold" /></div>
                 <div className="info-content">
-                  <span className="info-label">{lang === 'es' ? 'Horarios por Nivel' : 'Hours by Level'}</span>
-                  <p className="info-val-time"><strong>{lang === 'es' ? '🎹 Piano & Jazz Bar:' : '🎹 Piano & Jazz Bar:'}</strong> {RESTAURANT_DATA.hours.pianoBar}</p>
-                  <p className="info-val-time"><strong>{lang === 'es' ? '🎛️ Sub-Vault House Club:' : '🎛️ Sub-Vault House Club:'}</strong> {RESTAURANT_DATA.hours.houseClub}</p>
+                  <span className="info-label font-mono">{lang === 'es' ? 'Horarios' : 'Operating Hours'}</span>
+                  <p className="info-val-time font-mono"><strong>Level 01 Piano Bar:</strong> {RESTAURANT_DATA.hours.pianoBar}</p>
+                  <p className="info-val-time font-mono"><strong>Level -01 House Club:</strong> {RESTAURANT_DATA.hours.houseClub}</p>
                 </div>
               </div>
 
               {/* Dress Code */}
               <div className="info-row">
-                <div className="info-icon"><Shirt size={20} className="text-gold" /></div>
+                <div className="info-icon"><Shirt size={18} className="text-gold" /></div>
                 <div className="info-content">
-                  <span className="info-label">{lang === 'es' ? 'Código de Vestimenta' : 'Dress Code'}</span>
-                  <span className="info-val">{lang === 'es' ? 'Piano Bar: Smart Casual / Night Chic • Sub-Vault: Underground Club Attire' : 'Piano Bar: Smart Casual / Night Chic • Sub-Vault: Underground Club Attire'}</span>
+                  <span className="info-label font-mono">{lang === 'es' ? 'Dress Code' : 'Dress Code'}</span>
+                  <span className="info-val">{lang === 'es' ? 'Smart Casual / Night Minimal / All Black' : 'Smart Casual / Night Minimal / All Black'}</span>
                   <span className="info-hint">
-                    {lang === 'es' ? 'Derecho de admisión reservado en puerta. Entrada libre con reserva de mesa confirmada.' : 'Right of admission reserved at the door. Guaranteed entry with confirmed booking.'}
+                    {lang === 'es' ? 'Acceso garantizado con reserva de mesa confirmada.' : 'Guaranteed entry with confirmed table booking.'}
                   </span>
                 </div>
               </div>
             </div>
 
             {/* Direct Concierge Contact Buttons */}
-            <div className="concierge-buttons-group">
+            <div className="concierge-buttons-group font-mono">
               <a 
                 href={`tel:${RESTAURANT_DATA.phone}`} 
                 className="btn-secondary concierge-btn"
               >
-                <Phone size={16} />
+                <Phone size={14} />
                 <span>{RESTAURANT_DATA.phone}</span>
               </a>
 
               <a 
-                href={`https://wa.me/34688888888?text=Deseo%20lista%20de%20puerta%20o%20reserva%20en%20La%20Octava`} 
+                href={`https://wa.me/34688888888?text=Consulta%20reserva%20La%20Octava`} 
                 target="_blank" 
                 rel="noreferrer"
                 className="btn-secondary concierge-btn"
               >
-                <MessageSquare size={16} />
+                <MessageSquare size={14} />
                 <span>WhatsApp Guestlist</span>
               </a>
             </div>
@@ -90,7 +90,7 @@ export default function LocationAndContact({ lang, onOpenReservation }) {
               <div className="map-visual-inner">
                 <div className="map-grid-roads">
                   <div className="road road-castellana">
-                    <span className="road-name">PASEO DE LA CASTELLANA</span>
+                    <span className="road-name font-mono">PASEO DE LA CASTELLANA</span>
                   </div>
                   <div className="road road-perpendicular"></div>
                 </div>
@@ -104,24 +104,24 @@ export default function LocationAndContact({ lang, onOpenReservation }) {
                 </div>
 
                 <div className="map-location-tag">
-                  <span className="tag-brand">LA OCTAVA</span>
-                  <span className="tag-desc">{lang === 'es' ? 'Jazz Piano Bar & House Club' : 'Jazz Piano Bar & House Club'}</span>
+                  <span className="tag-brand font-display">LA OCTAVA</span>
+                  <span className="tag-desc font-mono">LEVEL 01 & LEVEL -01</span>
                 </div>
               </div>
             </div>
 
             <div className="map-card-footer">
               <div className="footer-left">
-                <span className="footer-title font-serif">{lang === 'es' ? '¿Vienes esta noche?' : 'Joining us tonight?'}</span>
-                <span className="footer-sub">{lang === 'es' ? 'Acceso preferente con reserva' : 'Priority door access with reservation'}</span>
+                <span className="footer-title font-display">{lang === 'es' ? 'Reserva para esta noche' : 'Join us tonight'}</span>
+                <span className="footer-sub font-mono">{lang === 'es' ? 'Acceso prioritario con reserva' : 'Priority door access'}</span>
               </div>
               <button 
                 type="button" 
-                className="btn-primary"
+                className="btn-primary font-mono"
                 onClick={onOpenReservation}
               >
-                <span>{lang === 'es' ? 'Reservar Mesa' : 'Book Table'}</span>
-                <ArrowUpRight size={16} />
+                <span>{lang === 'es' ? 'Reservar' : 'Book'}</span>
+                <ArrowUpRight size={14} />
               </button>
             </div>
           </div>

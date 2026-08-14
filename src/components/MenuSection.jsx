@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GlassWater, Utensils, Wine, Disc, Music, Sparkles } from 'lucide-react';
+import { Utensils, Wine, Disc, Music, Sparkles } from 'lucide-react';
 import { RESTAURANT_DATA } from '../data/restaurantData';
 
 export default function MenuSection({ lang, currency, onOpenReservation }) {
@@ -10,23 +10,23 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
   };
 
   const jazzCocktails = RESTAURANT_DATA.cocktails.filter(c => c.category === 'Jazz Bar Signature');
-  const houseCocktails = RESTAURANT_DATA.cocktails.filter(c => c.category === 'Sub-Vault House');
+  const houseCocktails = RESTAURANT_DATA.cocktails.filter(c => c.category === 'Sub-Vault House' || c.category === 'Sub-Level House');
 
   return (
     <section className="menu-section" id="cocteles">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">
-            {lang === 'es' ? 'Alquimia & Bocados Nocturnos' : 'Liquid Alchemy & Night Bites'}
+          <span className="section-subtitle font-mono">
+            {lang === 'es' ? 'Carta Líquida & Bocados' : 'Drinks & Night Bites'}
           </span>
-          <h2 className="section-title">
-            {lang === 'es' ? 'La Carta Líquida & Gourmet' : 'Cocktails, Vinyl & Culinary Bites'}
+          <h2 className="section-title font-display">
+            {lang === 'es' ? 'Mixología de Precisión & Cocina' : 'Craft Mixology & Raw Bar'}
           </h2>
           <p className="section-desc">
             {lang === 'es'
-              ? 'Destilados selectos ahumados con madera de roble para el piano bar y elixires energéticos de alta tensión para la pista de baile del sótano.'
-              : 'Oak-smoked vintage spirits crafted for the piano lounge and high-voltage energy elixirs for the subterranean dance floor.'}
+              ? 'Destilados nobles clarificados, hielo artesano y bocados selectos servidos toda la noche en ambos niveles.'
+              : 'Clarified noble spirits, hand-carved ice, and refined nocturnal bites served across both levels.'}
           </p>
         </div>
 
@@ -34,38 +34,38 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
         <div className="menu-tab-nav">
           <button
             type="button"
-            className={`menu-tab-btn ${activeTab === 'jazz-cocktails' ? 'active' : ''}`}
+            className={`menu-tab-btn font-mono ${activeTab === 'jazz-cocktails' ? 'active' : ''}`}
             onClick={() => setActiveTab('jazz-cocktails')}
           >
-            <Music size={16} />
-            <span>{lang === 'es' ? 'Cócteles de Piano Bar' : 'Piano Bar Cocktails'}</span>
+            <Music size={14} />
+            <span>{lang === 'es' ? 'Level 01 Cocktails' : 'Level 01 Cocktails'}</span>
           </button>
 
           <button
             type="button"
-            className={`menu-tab-btn ${activeTab === 'house-cocktails' ? 'active' : ''}`}
+            className={`menu-tab-btn font-mono ${activeTab === 'house-cocktails' ? 'active' : ''}`}
             onClick={() => setActiveTab('house-cocktails')}
           >
-            <Disc size={16} />
-            <span>{lang === 'es' ? 'Mixología Sub-Vault House' : 'Sub-Vault Energy Libations'}</span>
+            <Disc size={14} />
+            <span>{lang === 'es' ? 'Level -01 Sub-Level' : 'Level -01 Sub-Level'}</span>
           </button>
 
           <button
             type="button"
-            className={`menu-tab-btn ${activeTab === 'food-bites' ? 'active' : ''}`}
+            className={`menu-tab-btn font-mono ${activeTab === 'food-bites' ? 'active' : ''}`}
             onClick={() => setActiveTab('food-bites')}
           >
-            <Utensils size={16} />
-            <span>{lang === 'es' ? 'Bocados Gourmet (Toda la Noche)' : 'Gourmet Bites (All Night)'}</span>
+            <Utensils size={14} />
+            <span>{lang === 'es' ? 'Bocados Gourmet' : 'Gourmet Bites'}</span>
           </button>
 
           <button
             type="button"
-            className={`menu-tab-btn ${activeTab === 'wines' ? 'active' : ''}`}
+            className={`menu-tab-btn font-mono ${activeTab === 'wines' ? 'active' : ''}`}
             onClick={() => setActiveTab('wines')}
           >
-            <Wine size={16} />
-            <span>{lang === 'es' ? 'Champagnes & Grand Crus' : 'Champagnes & Grand Crus'}</span>
+            <Wine size={14} />
+            <span>{lang === 'es' ? 'Champagnes & Wines' : 'Champagnes & Wines'}</span>
           </button>
         </div>
 
@@ -75,17 +75,17 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
             {jazzCocktails.map((cocktail, idx) => (
               <div key={idx} className="cocktail-card glass-card">
                 <div className="cocktail-header">
-                  <span className="gold-badge">{cocktail.badge}</span>
-                  <span className="cocktail-price font-serif text-gold">
+                  <span className="gold-badge font-mono">{cocktail.badge}</span>
+                  <span className="cocktail-price font-mono text-gold">
                     {formatPrice(cocktail.priceEur, cocktail.priceUsd)}
                   </span>
                 </div>
-                <h3 className="cocktail-name font-serif">{cocktail.name}</h3>
-                <p className="cocktail-ingredients font-editorial">
+                <h3 className="cocktail-name font-display">{cocktail.name}</h3>
+                <p className="cocktail-ingredients">
                   {lang === 'es' ? cocktail.ingredientsEs : cocktail.ingredientsEn}
                 </p>
-                <div className="cocktail-notes">
-                  <span className="notes-label">{lang === 'es' ? 'Perfil acústico:' : 'Acoustic Profile:'}</span>
+                <div className="cocktail-notes font-mono">
+                  <span className="notes-label">{lang === 'es' ? 'Perfil:' : 'Profile:'}</span>
                   <span className="notes-value">{cocktail.notes}</span>
                 </div>
               </div>
@@ -99,16 +99,16 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
             {houseCocktails.map((cocktail, idx) => (
               <div key={idx} className="cocktail-card glass-card">
                 <div className="cocktail-header">
-                  <span className="gold-badge">{cocktail.badge}</span>
-                  <span className="cocktail-price font-serif text-gold">
+                  <span className="gold-badge font-mono">{cocktail.badge}</span>
+                  <span className="cocktail-price font-mono text-gold">
                     {formatPrice(cocktail.priceEur, cocktail.priceUsd)}
                   </span>
                 </div>
-                <h3 className="cocktail-name font-serif">{cocktail.name}</h3>
-                <p className="cocktail-ingredients font-editorial">
+                <h3 className="cocktail-name font-display">{cocktail.name}</h3>
+                <p className="cocktail-ingredients">
                   {lang === 'es' ? cocktail.ingredientsEs : cocktail.ingredientsEn}
                 </p>
-                <div className="cocktail-notes">
+                <div className="cocktail-notes font-mono">
                   <span className="notes-label">{lang === 'es' ? 'Frecuencia:' : 'Frequency:'}</span>
                   <span className="notes-value">{cocktail.notes}</span>
                 </div>
@@ -121,20 +121,20 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
         {activeTab === 'food-bites' && (
           <div className="alacarte-grid">
             <div className="alacarte-category-card glass-card" style={{ gridColumn: '1 / -1' }}>
-              <h3 className="alacarte-cat-title">
-                {lang === 'es' ? 'Bocados Servidos Hasta las 04:00 AM' : 'Bites Served Until 04:00 AM'}
+              <h3 className="alacarte-cat-title font-display">
+                {lang === 'es' ? 'Cocina & Raw Bar (Servicio Continuo)' : 'Kitchen & Raw Bar (Continuous Service)'}
               </h3>
               <div className="alacarte-items-list">
                 {RESTAURANT_DATA.foodBites.map((dish, dIdx) => (
                   <div key={dIdx} className="alacarte-item-row">
                     <div className="alacarte-item-info">
                       <div className="item-name-price">
-                        <span className="item-name">{lang === 'es' ? dish.nameEs : dish.nameEn}</span>
-                        <span className="item-price font-serif text-gold">
+                        <span className="item-name font-display">{lang === 'es' ? dish.nameEs : dish.nameEn}</span>
+                        <span className="item-price font-mono text-gold">
                           {formatPrice(dish.priceEur, dish.priceUsd)}
                         </span>
                       </div>
-                      <p className="item-desc font-editorial">
+                      <p className="item-desc">
                         {lang === 'es' ? dish.descEs : dish.descEn}
                       </p>
                     </div>
@@ -149,23 +149,23 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
         {activeTab === 'wines' && (
           <div className="cellar-grid">
             {[
-              { name: "Dom Pérignon Vintage 2015", region: "Champagne, Francia", vintage: "2015", priceEur: 360, notes: "Tostados, avellana y burbuja de terciopelo" },
-              { name: "Krug Grande Cuvée 171ème", region: "Champagne, Francia", vintage: "Édition", priceEur: 420, notes: "Frutas confitadas, pan de especias y vibración infinita" },
-              { name: "Vega Sicilia Valbuena 5°", region: "Ribera del Duero", vintage: "2018", priceEur: 240, notes: "Fruta negra madura, cedro y taninos nobles sedosos" },
-              { name: "Chassagne-Montrachet 1er Cru", region: "Bourgogne, Francia", vintage: "2021", priceEur: 210, notes: "Mantequilla fresca, mineralidad y flores blancas" }
+              { name: "Dom Pérignon Vintage 2015", region: "Champagne, Francia", vintage: "2015", priceEur: 360, notes: "Brioche, avellana tostada y burbuja fina" },
+              { name: "Krug Grande Cuvée 171ème", region: "Champagne, Francia", vintage: "Édition", priceEur: 420, notes: "Fruta confitada, jengibre y acidez vibrante" },
+              { name: "Vega Sicilia Valbuena 5°", region: "Ribera del Duero", vintage: "2018", priceEur: 240, notes: "Cedro, fruta negra y taninos sedosos" },
+              { name: "Chassagne-Montrachet 1er Cru", region: "Bourgogne, Francia", vintage: "2021", priceEur: 210, notes: "Mineralidad, flor blanca y frescura pura" }
             ].map((wine, idx) => (
               <div key={idx} className="cellar-wine-card glass-card">
                 <div className="wine-card-top">
-                  <div className="wine-vintage-tag font-serif">{wine.vintage}</div>
-                  <span className="wine-price font-serif text-gold">
+                  <div className="wine-vintage-tag font-mono">{wine.vintage}</div>
+                  <span className="wine-price font-mono text-gold">
                     {formatPrice(wine.priceEur, Math.round(wine.priceEur * 1.1))}
                   </span>
                 </div>
-                <h3 className="wine-name font-serif">{wine.name}</h3>
-                <span className="wine-region">{wine.region}</span>
-                <p className="wine-tasting-notes font-editorial">«{wine.notes}»</p>
-                <div className="wine-badge-row">
-                  <span className="gold-badge">{lang === 'es' ? 'Servicio de Cubitera de Plata' : 'Silver Ice Bucket Service'}</span>
+                <h3 className="wine-name font-display">{wine.name}</h3>
+                <span className="wine-region font-mono">{wine.region}</span>
+                <p className="wine-tasting-notes">«{wine.notes}»</p>
+                <div className="wine-badge-row font-mono">
+                  <span className="gold-badge">{lang === 'es' ? 'Servicio en Mesa' : 'Table Service'}</span>
                 </div>
               </div>
             ))}
@@ -173,13 +173,13 @@ export default function MenuSection({ lang, currency, onOpenReservation }) {
         )}
 
         {/* CTA */}
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
           <button 
             type="button" 
-            className="btn-primary"
+            className="btn-primary font-mono"
             onClick={() => onOpenReservation()}
           >
-            <Sparkles size={16} />
+            <Sparkles size={14} />
             <span>{lang === 'es' ? 'Reservar Mesa o Botella VIP' : 'Reserve Table or VIP Bottle'}</span>
           </button>
         </div>
