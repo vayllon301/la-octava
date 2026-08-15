@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .claude
+
+# Source media (encoded versions live in public/)
+LaOctava - Video.mp4

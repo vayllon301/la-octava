@@ -3,6 +3,21 @@ import { site } from "../site";
 export default function Hero() {
   return (
     <section className="hero" id="top">
+      <video
+        className="hero__video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/hero-poster.jpg"
+        aria-hidden="true"
+        tabIndex={-1}
+      >
+        <source src="/hero.webm" type="video/webm" />
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
+
       <div className="hero__glow" aria-hidden="true" />
 
       <div className="hero__inner">
