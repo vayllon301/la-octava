@@ -11,9 +11,20 @@ export const site = {
   },
 };
 
+export const siteCoordinates = {
+  lat: 41.4727,
+  lng: 2.0837,
+  display: "41°28'21.7\"N 2°05'01.3\"E",
+};
+
 export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   `${site.address.street}, ${site.address.postalCode} ${site.address.city}, ${site.address.region}`,
 )}`;
+
+export const appleMapsUrl = `https://maps.apple.com/?q=${encodeURIComponent(
+  `${site.name}, ${site.address.street}, ${site.address.city}`,
+)}&ll=41.4727,2.0837`;
+export const instagramUrl = "https://www.instagram.com/laoctavasantcugat/";
 
 export const floors = [
   {
