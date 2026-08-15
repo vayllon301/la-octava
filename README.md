@@ -1,16 +1,53 @@
-# React + Vite
+# La Octava
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Landing page for La Octava — a Piano Bar on the upper floor and a House Club on
+the lower floor, in Sant Cugat del Vallès (Barcelona).
 
-Currently, two official plugins are available:
+Built with React + Vite, no UI framework — plain CSS with design tokens.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run
 
-## React Compiler
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build into dist/
+npm run preview  # serve the production build
+npm run lint
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Structure
 
-## Expanding the Oxlint configuration
+```
+public/icon.jpeg        the house mark — also the favicon
+src/site.js             all copy: tagline, nights, address, floor descriptions
+src/index.css           design tokens (palette, type, spacing) + base styles
+src/App.css             layout and component styles
+src/components/         Nav, Hero, Floors, Nights, Visit, Footer, Reveal
+src/hooks/useReveal.js  one-shot fade-up on scroll into view
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Editing copy — the tagline, opening nights, address, or either floor's blurb —
+means editing `src/site.js` only; nothing is hardcoded in the components.
+
+## Palette
+
+Two hues only, both sampled directly out of `public/icon.jpeg`: the mark's
+burgundy `#480713` and its cream `#dcc0aa`. The page ground is that burgundy
+driven down toward black, so the room stays dark and the logo colours carry
+every accent.
+
+| Token          | Value     | Use                                       |
+| -------------- | --------- | ----------------------------------------- |
+| `--ink-950`    | `#050102` | hero and footer — the darkest ground      |
+| `--ink-900`    | `#0a0104` | page base, Nights section                 |
+| `--ink-850`    | `#0f0206` | Floors and Visit sections                 |
+| `--wine`       | `#480713` | **from the logo** — glows, fills, hovers  |
+| `--wine-lift`  | `#5e0a19` | rules, borders, ghost-button edges        |
+| `--cream`      | `#dcc0aa` | **from the logo** — accents, buttons      |
+| `--paper`      | `#f0e3d8` | headings                                  |
+| `--body-text`  | cream 72% | paragraphs                                |
+
+Type is Cormorant Garamond (display) and Jost (UI), loaded from Google Fonts in
+`index.html`.
+
+Background-video prompts for the hero live in [`VIDEO-PROMPTS.md`](./VIDEO-PROMPTS.md).
