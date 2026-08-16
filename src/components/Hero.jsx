@@ -1,6 +1,8 @@
-import { site } from "../site";
+import { useT } from "../i18n";
 
 export default function Hero() {
+  const t = useT();
+
   return (
     <section className="hero" id="top">
       <video
@@ -23,36 +25,29 @@ export default function Hero() {
       <div className="hero__inner">
         <img src="/icon.jpeg" alt="The La Octava mark" className="hero__mark" />
 
-        <p className="eyebrow">Sant Cugat del Vallès · Barcelona</p>
+        <p className="eyebrow">{t.heroEyebrow}</p>
 
         <h1 className="hero__title">La Octava</h1>
 
         <div className="hero__rule" aria-hidden="true">
           <span />
-          <em>Piano Bar &amp; House Club</em>
+          <em>{t.heroSubtitle}</em>
           <span />
         </div>
 
-        <p className="hero__tagline">{site.tagline}</p>
-        <p className="hero__summary">{site.summary}</p>
+        <p className="hero__tagline">{t.tagline}</p>
+        <p className="hero__summary">{t.summary}</p>
 
         <p className="hero__nights">
-          {site.nights.map((night) => (
+          {t.nightNames.map((night) => (
             <span key={night}>{night.slice(0, 3)}</span>
           ))}
         </p>
 
-        <div className="hero__actions">
-          <a className="btn btn--solid" href="#piano-bar">
-            Upstairs · Piano Bar
-          </a>
-          <a className="btn btn--ghost" href="#house-club">
-            Downstairs · House Club
-          </a>
-        </div>
+
       </div>
 
-      <a className="hero__scroll" href="#floors" aria-label="Scroll to the floors">
+      <a className="hero__scroll" href="#floors" aria-label={t.heroScrollAriaLabel}>
         <span />
       </a>
     </section>
