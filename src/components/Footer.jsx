@@ -6,11 +6,10 @@ export default function Footer() {
       <img src="/icon.jpeg" alt="" className="footer__mark" />
 
       <p className="footer__name">La Octava</p>
-      <p className="footer__line">{site.tagline}</p>
 
       <div className="footer__links">
         <a className="footer__address" href={mapsUrl} target="_blank" rel="noreferrer">
-          {site.address.street} · {site.address.postalCode} {site.address.city}
+          {site.address.street} · {site.address.city}
         </a>
 
         <a
@@ -39,9 +38,7 @@ export default function Footer() {
         </a>
       </div>
 
-      <p className="footer__legal">
-        © {new Date().getFullYear()} La Octava — Sant Cugat del Vallès
-      </p>
+      <p className="footer__legal">© {new Date().getFullYear()} La Octava</p>
     </footer>
   );
 }

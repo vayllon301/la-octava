@@ -31,6 +31,13 @@ export default function MiniMap() {
               <stop offset="100%" stopColor="rgba(18, 25, 16, 0.25)" />
             </linearGradient>
 
+            {/* Drifting light band */}
+            <linearGradient id="sweep" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(220, 192, 170, 0)" />
+              <stop offset="50%" stopColor="rgba(220, 192, 170, 0.07)" />
+              <stop offset="100%" stopColor="rgba(220, 192, 170, 0)" />
+            </linearGradient>
+
             {/* Main Avenue Gradient */}
             <linearGradient id="avenue-gold" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="rgba(220, 192, 170, 0.3)" />
@@ -59,9 +66,6 @@ export default function MiniMap() {
             stroke="rgba(120, 160, 110, 0.2)"
             strokeWidth="0.8"
           />
-          <text x="270" y="305" className="mini-map__label mini-map__label--park">
-            PARC RAMON BARNILS
-          </text>
 
           {/* Parc del Pla del Vinyet green patch */}
           <polygon
@@ -158,24 +162,17 @@ export default function MiniMap() {
           </g>
 
           {/* Minimal Landmark Anchors */}
-          {/* Teatre-Auditori */}
-          <g transform="translate(385, 135)">
-            <circle cx="0" cy="0" r="2.5" fill="#dcc0aa" opacity="0.7" />
-            <text x="7" y="3" className="mini-map__landmark">Teatre-Auditori</text>
-          </g>
-
           {/* FGC Sant Cugat Station */}
           <g transform="translate(125, 315)">
             <circle cx="0" cy="0" r="3" fill="none" stroke="#dcc0aa" strokeWidth="1" />
             <circle cx="0" cy="0" r="1.2" fill="#dcc0aa" />
-            <text x="8" y="3" className="mini-map__landmark">FGC Sant Cugat (8m)</text>
+            <text x="8" y="3" className="mini-map__landmark">FGC</text>
           </g>
 
           {/* Parking Pla del Vinyet */}
           <g transform="translate(275, 215)">
             <rect x="-6" y="-6" width="12" height="12" rx="2" fill="#480713" stroke="rgba(220,192,170,0.4)" strokeWidth="0.8" />
             <text x="0" y="3" textAnchor="middle" fill="#dcc0aa" fontSize="7" fontFamily="sans-serif">P</text>
-            <text x="10" y="2" className="mini-map__landmark">Parking</text>
           </g>
 
           {/* === VENUE PIN: LA OCTAVA (330, 190) === */}
@@ -183,8 +180,17 @@ export default function MiniMap() {
             {/* Radiance aura */}
             <circle cx="0" cy="0" r="50" fill="url(#pin-radiance)" />
 
-            {/* Subtle radar pulse */}
+            {/* Two radar pulses, one trailing the other */}
             <circle cx="0" cy="0" r="16" fill="none" stroke="#dcc0aa" strokeWidth="0.8" className="mini-map__pulse" />
+            <circle
+              cx="0"
+              cy="0"
+              r="16"
+              fill="none"
+              stroke="#dcc0aa"
+              strokeWidth="0.8"
+              className="mini-map__pulse mini-map__pulse--trail"
+            />
 
             {/* Pin Center */}
             <circle cx="0" cy="0" r="8" fill="#480713" stroke="#dcc0aa" strokeWidth="1.5" />
@@ -208,10 +214,20 @@ export default function MiniMap() {
                 LA OCTAVA
               </text>
               <text x="0" y="-5" textAnchor="middle" className="mini-map__pin-sub">
-                No. 57 · PLA DEL VINYET
+                No. 57
               </text>
             </g>
           </g>
+
+          {/* A slow band of light drifting across the plate */}
+          <rect
+            x="-160"
+            y="0"
+            width="160"
+            height="440"
+            fill="url(#sweep)"
+            className="mini-map__sweep"
+          />
         </svg>
 
         {/* Minimal Footer Strip */}

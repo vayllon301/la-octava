@@ -19,15 +19,17 @@ npm run lint
 
 ```
 public/icon.jpeg        the house mark — also the favicon
-src/site.js             all copy: tagline, nights, address, floor descriptions
+src/site.js             all copy: tagline, nights, address, floor + visit facts
 src/index.css           design tokens (palette, type, spacing) + base styles
-src/App.css             layout and component styles
+src/App.css             layout, component styles and the motion kit
 src/components/         Nav, Hero, Floors, Nights, Visit, Footer, Reveal
-src/hooks/useReveal.js  one-shot fade-up on scroll into view
+src/hooks/useReveal.js  one-shot "in view" flag for the reveal system
 ```
 
-Editing copy — the tagline, opening nights, address, or either floor's blurb —
-means editing `src/site.js` only; nothing is hardcoded in the components.
+Editing copy — the tagline, opening nights, address, either floor's blurb, or
+the three visit facts — means editing `src/site.js` only; nothing is hardcoded
+in the components. Copy is deliberately terse: one line to set a room, then the
+facts, and the page carries the rest.
 
 ## Palette
 
@@ -50,4 +52,16 @@ every accent.
 Type is Cormorant Garamond (display) and Jost (UI), loaded from Google Fonts in
 `index.html`.
 
-Background-video prompts for the hero live in [`VIDEO-PROMPTS.md`](./VIDEO-PROMPTS.md).
+## Motion
+
+Two easing tokens (`--ease-out`, `--ease-spring`) at the top of the motion kit
+in `App.css` drive everything. Blocks enter through `<Reveal>`, which picks a
+direction with `variant` (`up`, `left`, `right`, `zoom`) and staggers siblings
+with `delay`. The hero runs on its own timeline: `--step` queues each element,
+and the title's letters carry a finer stagger on top.
+
+Ambient loops — the hero's breathing lamp, the floating marks, the piano keys
+and level meter in the floor plans, the map's pulse and light sweep — all stop
+under `prefers-reduced-motion`, and the reveal system lands its blur and offset
+instantly. `index.css` collapses durations globally; `App.css` handles the
+looping pieces that need to be switched off outright.

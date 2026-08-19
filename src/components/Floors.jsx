@@ -1,19 +1,23 @@
 import { floors } from "../site";
 import Reveal from "./Reveal";
 
-/** Two stacked rooms — upper lit for the piano bar, lower lit for the club. */
+/**
+ * Two stacked rooms — the lit one belongs to this card. Inside it, three marks
+ * keep time: piano keys upstairs, a level meter downstairs. The outlines draw
+ * themselves in once the card reveals (see .floor.is-visible in App.css).
+ */
 function FloorPlan({ active }) {
   const upper = active === "piano-bar";
 
   return (
-    <svg className="plan" viewBox="0 0 120 120" aria-hidden="true">
+    <svg className={`plan plan--${active}`} viewBox="0 0 120 120" aria-hidden="true">
       <rect
         x="14"
         y="16"
         width="92"
         height="42"
         rx="2"
-        className={upper ? "plan__room plan__room--on" : "plan__room"}
+        className={`plan__room${upper ? " plan__room--on" : ""}`}
       />
       <rect
         x="14"
@@ -21,14 +25,27 @@ function FloorPlan({ active }) {
         width="92"
         height="42"
         rx="2"
-        className={!upper ? "plan__room plan__room--on" : "plan__room"}
+        className={`plan__room${upper ? "" : " plan__room--on"}`}
       />
       <line x1="14" y1="60" x2="106" y2="60" className="plan__slab" />
-      <text x="60" y="43" className="plan__label">
-        {upper ? "PIANO" : "·"}
-      </text>
-      <text x="60" y="89" className="plan__label">
-        {upper ? "·" : "HOUSE"}
+
+      <g className="plan__marks" transform={upper ? "translate(0 0)" : "translate(0 46)"}>
+        {[0, 1, 2].map((n) => (
+          <rect
+            key={n}
+            x={46 + n * 10}
+            y="25"
+            width="5"
+            height="13"
+            rx="1"
+            className={upper ? "plan__key" : "plan__bar"}
+            style={{ "--n": n }}
+          />
+        ))}
+      </g>
+
+      <text x="60" y={upper ? 52 : 98} className="plan__label">
+        {upper ? "PIANO" : "HOUSE"}
       </text>
     </svg>
   );
@@ -53,6 +70,7 @@ export default function Floors() {
             key={floor.id}
             id={floor.id}
             className="floor"
+            variant={i === 0 ? "left" : "right"}
             delay={i * 120}
           >
             <FloorPlan active={floor.id} />

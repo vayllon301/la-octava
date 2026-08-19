@@ -1,8 +1,29 @@
-import { useT } from "../i18n";
+import { site } from "../site";
+
+/** "La Octava" split so each letter can drift up on its own beat. */
+function Title({ text }) {
+  let i = 0;
+
+  return (
+    <h1 className="hero__title" aria-label={text}>
+      {text.split(" ").map((word) => (
+        <span className="hero__word" key={word} aria-hidden="true">
+          {[...word].map((letter) => (
+            <span
+              className="hero__letter"
+              key={`${word}-${i}`}
+              style={{ "--i": i++ }}
+            >
+              {letter}
+            </span>
+          ))}
+        </span>
+      ))}
+    </h1>
+  );
+}
 
 export default function Hero() {
-  const t = useT();
-
   return (
     <section className="hero" id="top">
       <video
@@ -23,31 +44,33 @@ export default function Hero() {
       <div className="hero__glow" aria-hidden="true" />
 
       <div className="hero__inner">
-        <img src="/icon.jpeg" alt="The La Octava mark" className="hero__mark" />
+        <img
+          src="/icon.jpeg"
+          alt="The La Octava mark"
+          className="hero__mark hero__step"
+          style={{ "--step": 0 }}
+        />
 
-        <p className="eyebrow">{t.heroEyebrow}</p>
+        <Title text={site.name} />
 
-        <h1 className="hero__title">La Octava</h1>
-
-        <div className="hero__rule" aria-hidden="true">
-          <span />
-          <em>{t.heroSubtitle}</em>
-          <span />
+        <div className="hero__rule hero__step" style={{ "--step": 2 }}>
+          <span aria-hidden="true" />
+          <em>{site.summary}</em>
+          <span aria-hidden="true" />
         </div>
 
-        <p className="hero__tagline">{t.tagline}</p>
-        <p className="hero__summary">{t.summary}</p>
+        <p className="hero__tagline hero__step" style={{ "--step": 3 }}>
+          {site.tagline}
+        </p>
 
-        <p className="hero__nights">
-          {t.nightNames.map((night) => (
+        <p className="hero__nights hero__step" style={{ "--step": 4 }}>
+          {site.nights.map((night) => (
             <span key={night}>{night.slice(0, 3)}</span>
           ))}
         </p>
-
-
       </div>
 
-      <a className="hero__scroll" href="#floors" aria-label={t.heroScrollAriaLabel}>
+      <a className="hero__scroll" href="#floors" aria-label="Scroll to the floors">
         <span />
       </a>
     </section>
