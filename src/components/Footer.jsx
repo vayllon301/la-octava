@@ -1,4 +1,4 @@
-import { mapsUrl, instagramUrl } from "../site";
+import { mapsUrl, instagramUrl, site } from "../site";
 import { useT } from "../i18n";
 
 export default function Footer() {
@@ -9,11 +9,10 @@ export default function Footer() {
       <img src="/icon.jpeg" alt="" className="footer__mark" />
 
       <p className="footer__name">La Octava</p>
-      <p className="footer__line">{t.tagline}</p>
 
       <div className="footer__links">
         <a className="footer__address" href={mapsUrl} target="_blank" rel="noreferrer">
-          Avinguda del Pla del Vinyet 57 · 08172 Sant Cugat del Vallès
+          {site.address.street} · {site.address.city}
         </a>
 
         <a
@@ -42,9 +41,7 @@ export default function Footer() {
         </a>
       </div>
 
-      <p className="footer__legal">
-        © {new Date().getFullYear()} La Octava — Sant Cugat del Vallès
-      </p>
+      <p className="footer__legal">© {new Date().getFullYear()} La Octava</p>
     </footer>
   );
 }

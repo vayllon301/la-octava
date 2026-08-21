@@ -26,21 +26,17 @@ const translations = {
     // Nights
     nightsEyebrow: 'Open three nights',
     nightsTitle: 'Thursday to Saturday',
-    nightsNote: 'Dinner and piano from the early evening upstairs; the club opens below at midnight. Tables are limited — worth asking ahead.',
+    nightsNote: 'Tables are limited — worth asking ahead.',
     nightNames: ['Thursday', 'Friday', 'Saturday'],
 
     // Visit
     visitEyebrow: 'Visit',
-    visitNote1: '15 minutes from Barcelona via C-16 Túnels de Vallvidrera.',
-    visitNote2: '8-minute walk from FGC Sant Cugat · Underground parking adjacent.',
     visitOpenMaps: 'Open in Maps',
-    visitNightsLabel: 'Nights',
-    visitUpstairsLabel: 'Upstairs',
-    visitUpstairsValue: 'Piano Bar — dinner, piano & live music',
-    visitDownstairsLabel: 'Downstairs',
-    visitDownstairsValue: 'House Club — house music, late',
-    visitDressLabel: 'Dress',
-    visitDressValue: 'An evening worth dressing up for',
+    visitFacts: [
+      ['Nights', 'Thu · Fri · Sat'],
+      ['Getting here', '8 min from FGC Sant Cugat · parking adjacent'],
+      ['Dress', 'Worth dressing up for'],
+    ],
 
     // MiniMap
     miniMapAriaLabel: 'Open La Octava at Avinguda del Pla del Vinyet 57 in Google Maps',
@@ -51,25 +47,25 @@ const translations = {
 
     // Site data (from site.js)
     tagline: 'An evening worth dressing up for.',
-    summary: 'Dinner, piano & live music.',
+    summary: 'Piano Bar upstairs · House Club below',
 
     // Floors data
     floorPianoLevel: 'Upper floor',
     floorPianoName: 'Piano Bar',
     floorPianoKicker: 'Dinner · Piano · Live music',
-    floorPianoDesc: 'The evening opens upstairs. A proper bar under low light — something to eat if you want it, a piano that never quite stops, and live sets that carry the room from the first drink to the last.',
+    floorPianoDesc: 'Low light, a proper bar, and a piano that never quite stops.',
     floorPianoDetails: [
       ['Bar', 'From 8:30 pm'],
       ['Live music', 'From 10:00 pm'],
-      ['Dress', 'Smart · Come dressed up'],
+      ['Dress', 'Smart'],
     ],
     floorHouseLevel: 'Lower floor',
     floorHouseName: 'House Club',
     floorHouseKicker: 'House · Late · Downstairs',
-    floorHouseDesc: 'Then the night moves down a floor. A darker room, a proper sound system, and resident selectors playing house until the small hours.',
+    floorHouseDesc: 'A darker room, a serious sound system, house until late.',
     floorHouseDetails: [
       ['Doors', 'From 12:00 am'],
-      ['Sound', 'House & selected guests'],
+      ['Sound', 'House & guests'],
       ['Close', 'Late'],
     ],
   },
@@ -98,21 +94,17 @@ const translations = {
     // Nights
     nightsEyebrow: 'Abrimos tres noches',
     nightsTitle: 'De jueves a sábado',
-    nightsNote: 'Cena y piano desde primera hora de la tarde en la planta de arriba; el club abre abajo a medianoche. Las mesas son limitadas — merece la pena reservar.',
+    nightsNote: 'Las mesas son limitadas — merece la pena reservar.',
     nightNames: ['Jueves', 'Viernes', 'Sábado'],
 
     // Visit
     visitEyebrow: 'Visítanos',
-    visitNote1: 'A 15 minutos de Barcelona por la C-16 Túnels de Vallvidrera.',
-    visitNote2: 'A 8 minutos andando del FGC Sant Cugat · Parking subterráneo contiguo.',
     visitOpenMaps: 'Abrir en Maps',
-    visitNightsLabel: 'Noches',
-    visitUpstairsLabel: 'Arriba',
-    visitUpstairsValue: 'Piano Bar — cena, piano y música en vivo',
-    visitDownstairsLabel: 'Abajo',
-    visitDownstairsValue: 'House Club — house music, hasta tarde',
-    visitDressLabel: 'Vestimenta',
-    visitDressValue: 'Una velada que merece vestirse para la ocasión',
+    visitFacts: [
+      ['Noches', 'Jue · Vie · Sáb'],
+      ['Cómo llegar', 'A 8 min del FGC Sant Cugat · parking contiguo'],
+      ['Vestimenta', 'Merece vestirse para la ocasión'],
+    ],
 
     // MiniMap
     miniMapAriaLabel: 'Abrir La Octava en Avinguda del Pla del Vinyet 57 en Google Maps',
@@ -123,25 +115,25 @@ const translations = {
 
     // Site data
     tagline: 'Una velada que merece vestirse para la ocasión.',
-    summary: 'Cena, piano y música en vivo.',
+    summary: 'Piano Bar arriba · House Club abajo',
 
     // Floors data
     floorPianoLevel: 'Planta superior',
     floorPianoName: 'Piano Bar',
     floorPianoKicker: 'Cena · Piano · Música en vivo',
-    floorPianoDesc: 'La noche empieza arriba. Un bar en penumbra — algo para picar si apetece, un piano que nunca termina de callar, y sesiones en directo que llevan la sala del primer trago al último.',
+    floorPianoDesc: 'Luz baja, un bar como debe ser, y un piano que nunca termina de callar.',
     floorPianoDetails: [
       ['Bar', 'Desde las 20:30'],
       ['Música en vivo', 'Desde las 22:00'],
-      ['Vestimenta', 'Elegante · Ven arreglado'],
+      ['Vestimenta', 'Elegante'],
     ],
     floorHouseLevel: 'Planta inferior',
     floorHouseName: 'House Club',
     floorHouseKicker: 'House · Hasta tarde · Abajo',
-    floorHouseDesc: 'Entonces la noche baja una planta. Una sala más oscura, un sistema de sonido como debe ser, y selectores residentes pinchando house hasta altas horas.',
+    floorHouseDesc: 'Una sala más oscura, un sonido serio, house hasta tarde.',
     floorHouseDetails: [
       ['Apertura', 'Desde las 00:00'],
-      ['Sonido', 'House e invitados selectos'],
+      ['Sonido', 'House e invitados'],
       ['Cierre', 'Tarde'],
     ],
   },
