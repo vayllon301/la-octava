@@ -1,15 +1,17 @@
 import { mapsUrl, site } from "../site";
+import { useT } from "../i18n";
 import Reveal from "./Reveal";
 import MiniMap from "./MiniMap";
 
 export default function Visit() {
+  const t = useT();
   const { street, city, region, postalCode } = site.address;
 
   return (
     <section className="visit" id="visit">
       <div className="visit__grid">
         <Reveal className="visit__left">
-          <p className="eyebrow">Visit</p>
+          <p className="eyebrow">{t.visitEyebrow}</p>
           <h2 className="section-title">
             Avinguda del
             <br />
@@ -25,33 +27,33 @@ export default function Visit() {
           </address>
 
           <p className="visit__note">
-            15 minutes from Barcelona via C-16 Túnels de Vallvidrera.
+            {t.visitNote1}
             <br />
-            8-minute walk from FGC Sant Cugat · Underground parking adjacent.
+            {t.visitNote2}
           </p>
 
           <div className="visit__actions">
             <a className="btn btn--solid" href={mapsUrl} target="_blank" rel="noreferrer">
-              Open in Maps
+              {t.visitOpenMaps}
             </a>
           </div>
 
           <dl className="visit__facts">
             <div>
-              <dt>Nights</dt>
-              <dd>{site.nights.map((n) => n.slice(0, 3)).join(" · ")}</dd>
+              <dt>{t.visitNightsLabel}</dt>
+              <dd>{t.nightNames.map((n) => n.slice(0, 3)).join(" · ")}</dd>
             </div>
             <div>
-              <dt>Upstairs</dt>
-              <dd>Piano Bar — dinner, piano &amp; live music</dd>
+              <dt>{t.visitUpstairsLabel}</dt>
+              <dd>{t.visitUpstairsValue}</dd>
             </div>
             <div>
-              <dt>Downstairs</dt>
-              <dd>House Club — house music, late</dd>
+              <dt>{t.visitDownstairsLabel}</dt>
+              <dd>{t.visitDownstairsValue}</dd>
             </div>
             <div>
-              <dt>Dress</dt>
-              <dd>An evening worth dressing up for</dd>
+              <dt>{t.visitDressLabel}</dt>
+              <dd>{t.visitDressValue}</dd>
             </div>
           </dl>
         </Reveal>

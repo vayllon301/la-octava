@@ -1,3 +1,4 @@
+import { I18nProvider } from "./i18n";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import Floors from "./components/Floors";
@@ -8,7 +9,7 @@ import "./App.css";
 
 export default function App() {
   return (
-    <>
+    <I18nProvider>
       <Nav />
       <main>
         <Hero />
@@ -17,6 +18,6 @@ export default function App() {
         <Visit />
       </main>
       <Footer />
-    </>
+    </I18nProvider>
   );
 }

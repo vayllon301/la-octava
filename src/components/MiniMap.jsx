@@ -1,13 +1,16 @@
 import { mapsUrl, siteCoordinates } from "../site";
+import { useT } from "../i18n";
 
 export default function MiniMap() {
+  const t = useT();
+
   return (
     <a
       className="mini-map"
       href={mapsUrl}
       target="_blank"
       rel="noreferrer"
-      aria-label="Open La Octava at Avinguda del Pla del Vinyet 57 in Google Maps"
+      aria-label={t.miniMapAriaLabel}
     >
       <div className="mini-map__frame">
         <svg
@@ -218,7 +221,7 @@ export default function MiniMap() {
         <div className="mini-map__meta">
           <span className="mini-map__coords">{siteCoordinates.display}</span>
           <span className="mini-map__cta">
-            Open in Maps
+            {t.miniMapOpenMaps}
             <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>

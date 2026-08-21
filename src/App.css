@@ -171,6 +171,52 @@
   background: var(--wine);
 }
 
+/* ---------------------------------------------------------- lang toggle */
+
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.45rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--wine-lift);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  transition:
+    border-color 0.4s ease,
+    background-color 0.4s ease;
+}
+
+.lang-toggle:hover {
+  border-color: var(--cream);
+  background: rgba(72, 7, 19, 0.3);
+}
+
+.lang-toggle__option {
+  transition: color 0.3s ease;
+}
+
+.lang-toggle__option.is-active {
+  color: var(--paper);
+  font-weight: 500;
+}
+
+.lang-toggle__sep {
+  color: var(--wine-lift);
+  margin: 0 0.1rem;
+}
+
 /* ------------------------------------------------------------------ hero */
 
 .hero {

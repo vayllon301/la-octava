@@ -1,4 +1,4 @@
-import { floors } from "../site";
+import { useT } from "../i18n";
 import Reveal from "./Reveal";
 
 /** Two stacked rooms — upper lit for the piano bar, lower lit for the club. */
@@ -35,14 +35,35 @@ function FloorPlan({ active }) {
 }
 
 export default function Floors() {
+  const t = useT();
+
+  const floors = [
+    {
+      id: "piano-bar",
+      level: t.floorPianoLevel,
+      name: t.floorPianoName,
+      kicker: t.floorPianoKicker,
+      description: t.floorPianoDesc,
+      details: t.floorPianoDetails,
+    },
+    {
+      id: "house-club",
+      level: t.floorHouseLevel,
+      name: t.floorHouseName,
+      kicker: t.floorHouseKicker,
+      description: t.floorHouseDesc,
+      details: t.floorHouseDetails,
+    },
+  ];
+
   return (
     <section className="floors" id="floors">
       <Reveal className="section-head">
-        <p className="eyebrow">Two floors, one night</p>
+        <p className="eyebrow">{t.floorsEyebrow}</p>
         <h2 className="section-title">
-          Piano upstairs.
+          {t.floorsTitle1}
           <br />
-          House downstairs.
+          {t.floorsTitle2}
         </h2>
       </Reveal>
 
